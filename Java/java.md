@@ -507,7 +507,605 @@
 
 || Tipos de datos
 
+	Se clasifican en tipos de datos primitivos y tipos de datos de referencia (u objetos).
 
+
+	1. Primitivos:
+
+    Enteros/int(-+):
+
+        byte: 
+
+        	8 bits, rango de -128 a 127.
+
+        short: 
+
+        	16 bits, rango de -32,768 a 32,767.
+
+        int: 
+
+        	32 bits, rango de -2,147,483,648 a 2,147,483,647.
+
+        long: 
+
+        	64 bits, rango de -9,223,372,036,854,775,808 a 9,223,372,036,854,775,807.
+
+        ```java
+
+        int numeroEntero = 42;
+		long numeroLargo = 123456789L;
+
+        ```
+
+
+    Flotante:
+
+		float: 
+
+			32 bits, precisión de 7 dígitos decimales.
+
+		double: 
+
+			64 bits, precisión de 15 dígitos decimales.
+
+		```java
+
+		float numeroFlotante = 3.14f;
+		double numeroDoble = 2.71828;
+
+		```
+
+
+	Caracteres:
+
+    	char: 
+
+    		16 bits, representa un carácter Unicode.
+
+    	```java
+
+    	char letra = 'A';
+
+    	```
+
+
+    Booleanos:
+
+    	boolean: 
+
+    		Representa valores booleanos true o false.
+
+    	```java
+
+    	boolean esVerdadero = true;
+
+    	```
+
+
+    2. Referencia:
+
+
+    Cadenas:
+
+    	String: 
+
+    		Secuencia de caracteres Unicode.
+
+    	```java
+
+    	String mensaje = "Hola, mundo!";
+
+    	```
+
+
+	Arreglos:
+
+    	Representan colecciones de elementos del mismo tipo.   
+
+    	```java
+
+    	int[] arregloEnteros = {1, 2, 3, 4, 5};
+
+    	```
+
+
+    Clases y Objetos:
+
+    	Los tipos de datos creados por el usuario, definidos mediante clases y objetos.
+
+    	```java
+
+    	class Persona {
+		    String nombre;
+		    int edad;
+		}
+
+		Persona persona = new Persona();
+
+    	```
+
+
+	Tipos Especiales:
+
+    	null: 
+
+    		Representa la ausencia de un valor o un objeto nulo.    
+
+    	```java
+
+    	String cadenaNula = null;
+
+    	```
+
+
+
+|| Operadores 
+
+	
+	1. Aritméticos: 
+
+	Suma: 
+
+		```
+		int resultado = a + b;
+
+		```
+
+	Resta: 
+
+		```
+		int resultado = a - b;
+			
+		```
+
+	Multiplicación: 
+
+		```
+		int resultado = a * b;
+			
+		```
+
+	División: 
+
+		```
+		int resultado = a / b;
+			
+		```
+
+	Módulo (Residuo):
+
+		```
+		int resultado = a % b;
+			
+		```
+
+	Incremento: 
+
+		```
+		a++;
+			
+		```
+
+	Decremento: 
+
+		```
+		b--;
+			
+		```
+
+
+	2. Asignación: 
+
+
+	Simple: 
+
+		```
+		int x = 10;
+			
+		```
+
+	Asignación con Suma, resta, etc: 
+
+		```
+		a += 5 // Equivalente a: a = a + 5;
+			
+		```
+
+
+	3. Relacionales: 
+
+
+	Igual a: 
+
+		```java
+
+		if (a == b) {
+		    // ...
+		}
+
+		```
+
+	No igual: 
+
+		```java
+
+		if (a != b) {
+		    // ...
+		}
+
+		```
+
+	Mayor que, Menor que, Mayor o Igual, Menor o Igual: 
+
+		```java
+
+		if (a > b) {
+		    // ...
+		}
+
+		if (a < b) {
+		    // ...
+		}
+
+		if (a >= b) {
+		    // ...
+		}
+
+		if (a <= b) {
+		    // ...
+		}
+
+		```
+
+
+	4. Lógicos: 
+
+
+	AND: 
+
+		```java
+
+		if (condicion1 && condicion2) {
+		    // ...
+		}
+
+		```
+
+	Or: 
+
+		```java
+
+		if (condicion1 || condicion2) {
+		    // ...
+		}
+
+		```
+
+	Not: 
+
+		```java
+
+		if (!condicion) {
+		    // ...
+		}
+
+		```
+
+
+	5. Bitwise: 
+
+
+	And Bitwise: 
+
+		```java
+
+		int resultado = a & b;
+
+		```
+
+	OR Bitwise:
+
+		```java
+
+		int resultado = a | b;
+
+		```
+
+	XOR Bitwise: 
+
+		```java
+
+		int resultado = a ^ b;
+
+		```
+
+	Desplazamiento a la Izquierda, Desplazamiento a la Derecha: 	
+
+		```java
+
+		int resultado = a << 2;  // Desplazamiento a la izquierda
+		
+		int resultado2 = a >> 1; // Desplazamiento a la derecha
+
+		```		
+
+
+	6. Ternario y Nulo: 
+
+
+	Ternario: 
+
+		```java
+
+		int maximo = (a > b) ? a : b;			
+
+		```
+
+	Nulo (null): 
+
+		```java
+
+		String nombre = (nombreUsuario != null) ? nombreUsuario : "Invitado";
+
+		```
+
+
+
+|| Estructuras de Control
+
+	Permiten a los programadores controlar el flujo de ejecución de un programa.
+
+
+	Control de Selección:
+
+
+	If-Else:
+
+		Se utiliza para tomar decisiones basadas en condiciones.
+
+		```
+		if (condicion) {
+		    // Bloque de código si la condición es verdadera
+		} else {
+		    // Bloque de código si la condición es falsa
+		}
+
+		```
+
+
+	Switch-Case:
+
+		Se utiliza para seleccionar una opción entre varias opciones.
+
+		```java
+
+		int opcion = 2;
+		switch (opcion) {
+		    case 1:
+		        // Código para la opción 1
+		        break;
+		    case 2:
+		        // Código para la opción 2
+		        break;
+		    default:
+		        // Código para el caso por defecto (si ninguna opción coincide)
+		}
+
+		```
+
+
+	Control de Iteración (Bucles):
+
+	For:
+
+		Se utiliza para repetir un bloque de código un número específico de veces.
+
+		```
+		for (int i = 0; i < 5; i++) {
+		    // Bloque de código a repetir
+		}
+
+		```
+
+
+	While:
+
+		Se utiliza para repetir un bloque de código mientras una condición sea verdadera.
+
+		```
+		while (condicion) {
+		    // Bloque de código a repetir
+		}
+
+		```
+
+
+	Do-While:
+
+		Similar a while, pero garantiza que el bloque de código se ejecute al menos una vez, ya que la condición se verifica después de la ejecución del bloque.
+
+		```	
+		do {
+		    // Bloque de código a repetir
+		} while (condicion);
+
+		```
+
+
+	Control de Salida:
+
+
+	Break:
+
+		Se utiliza para salir de un bucle o un bloque switch antes de que se complete normalmente.
+
+		```
+		for (int i = 0; i < 10; i++) {
+		    if (i == 5) {
+		        break; // Sale del bucle cuando i es igual a 5
+		    }
+		}
+
+		```
+
+
+	Continue:
+		
+		Se utiliza para pasar a la siguiente iteración de un bucle sin ejecutar el resto del código dentro del bucle para la iteración actual.
+
+		```
+		for (int i = 0; i < 10; i++) {
+		    if (i == 5) {
+		        continue; // Salta a la siguiente iteración cuando i es igual a 5
+		    }
+		    // Código aquí que no se ejecutará cuando i sea igual a 5
+		}
+
+		```
+
+
+
+|| Estructuras de Datos
+
+	Se utilizan para almacenar y organizar información de manera eficiente.
+
+
+	Listas: 
+
+
+	ArrayList:
+
+		Implementa la interfaz List y proporciona una lista dinámica que puede crecer o reducir su tamaño según sea necesario.
+
+		```java
+
+		List<String> lista = new ArrayList<>();
+		lista.add("Elemento 1");
+		lista.add("Elemento 2");
+
+		```
+
+
+	LinkedList:
+
+		Es una lista doblemente enlazada que permite un rápido acceso y modificación en ambos extremos de la lista.
+
+		```java
+
+		LinkedList<Integer> listaEnlazada = new LinkedList<>();
+		listaEnlazada.add(1);
+		listaEnlazada.add(2);
+
+		```
+
+
+	Conjuntos:
+	
+
+	HashSet:
+
+		Implementa la interfaz Set y utiliza una tabla hash para almacenar elementos. 
+
+		No permite elementos duplicados.
+
+		```java
+
+		Set<String> conjunto = new HashSet<>();
+		conjunto.add("Elemento 1");
+		conjunto.add("Elemento 2");
+
+		```
+
+
+	TreeSet:
+
+		Implementa la interfaz SortedSet y mantiene los elementos ordenados en orden natural o mediante un comparador.	
+
+		```java
+
+		SortedSet<Integer> conjuntoOrdenado = new TreeSet<>();
+		conjuntoOrdenado.add(3);
+		conjuntoOrdenado.add(1);
+
+		```
+
+
+	Mapas: 
+
+
+	HashMap:
+
+		Implementa la interfaz Map y utiliza una tabla hash para almacenar pares clave-valor.
+
+		```java
+
+		Map<String, Integer> mapa = new HashMap<>();
+		mapa.put("clave1", 1);
+		mapa.put("clave2", 2);
+
+		```
+
+
+	Pilas:
+
+
+	Stack:
+
+		Representa una pila (stack) y sigue el principio de Last-In, First-Out (LIFO). 
+
+		```
+		Stack<String> pila = new Stack<>();
+		pila.push("Elemento 1");
+		pila.push("Elemento 2");
+
+		```
+
+
+	Colas: 
+
+
+	Queue:
+
+		Interfaz que representa una cola y sigue el principio de First-In, First-Out (FIFO).
+
+		```
+		Queue<String> cola = new LinkedList<>();
+		cola.offer("Elemento 1");
+		cola.offer("Elemento 2");
+
+		```
+
+
+	Arrays:
+	
+
+	Arrays:
+
+		Estructuras de datos estáticas que pueden almacenar elementos del mismo tipo.
+
+		```
+		int[] arreglo = {1, 2, 3, 4, 5};
+
+		```
+
+
+	Vectores
+
+
+	Vector: 
+
+		Es una versión sincronizada de un array dinámico y es parte de las colecciones legadas de Java.
+
+		```
+		Vector<String> vector = new Vector<>();
+		vector.add("Elemento 1");
+		vector.add("Elemento 2");
+
+		```
+
+
+
+|| Sintaxis Java 
 
 
 
