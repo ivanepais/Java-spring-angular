@@ -1107,8 +1107,585 @@
 
 || Sintaxis Java 
 
+	Sintaxis básica para la declaración de variables, objetos, clases, estructuras, métodos, etc. 
+
+	Todo gira entorno a las clases, dada las características de la programación orientada a objetos del lenguaje Java .
 
 
+	Clases: 
+
+		Necesitamos clases para definir variables. 
+
+		```java
+
+		public class MiClase {
+		    public static void main(String[] args) {
+		        // Declaración de variables
+		        int edad = 25;
+		        double altura = 1.75;
+		        String nombre = "Juan";
+
+		        // Imprimir variables
+		        System.out.println("Nombre: " + nombre);
+		        System.out.println("Edad: " + edad);
+		        System.out.println("Altura: " + altura);
+		    }
+		}
+
+		```
+
+
+	Estructuras de Control:
+
+		If-Else: 
+
+			```java
+
+			public class MiClase {
+			    public static void main(String[] args) {
+			        int edad = 18;
+
+			        // Estructura de control If-Else
+			        if (edad >= 18) {
+			            System.out.println("Eres mayor de edad");
+			        } else {
+			            System.out.println("Eres menor de edad");
+			        }
+			    }
+			}
+
+			```
+
+
+	Bucle for: 
+
+		```java
+
+		public class MiClase {
+		    public static void main(String[] args) {
+		        // Bucle For para imprimir números del 1 al 5
+		        for (int i = 1; i <= 5; i++) {
+		            System.out.println(i);
+		        }
+		    }
+		}
+
+
+		```
+
+
+	Métodos: 
+
+		```java
+
+		public class MiClase {
+		    public static void main(String[] args) {
+		        // Llamada a un método
+		        saludar("Juan");
+		    }
+
+		    // Definición de un método
+		    static void saludar(String nombre) {
+		        System.out.println("¡Hola, " + nombre + "!");
+		    }
+		}
+
+		```
+
+
+	Excepciones: 
+		
+		```java
+
+		public class MiClase {
+		    public static void main(String[] args) {
+		        // Manejo de excepciones
+		        try {
+		            int resultado = dividir(10, 0);
+		            System.out.println("Resultado: " + resultado);
+		        } catch (ArithmeticException e) {
+		            System.err.println("Error: División por cero");
+		        }
+		    }
+
+		    // Método que puede lanzar una excepción
+		    static int dividir(int numerador, int denominador) {
+		        return numerador / denominador;
+		    }
+		}
+
+		```
+
+
+|| Proyecto básico 
+
+	Estructura del proyecto, código, compilación y ejecución: 
+
+	Estructura:
+
+		Carpetas que contienen los módulos de la app. 
+
+
+	Código: 
+
+		Archivos para desarrollar. 
+
+		```java
+
+		public class HolaMundo {
+		    public static void main(String[] args) {
+		        System.out.println("¡Hola, mundo!");
+		    }
+		}
+
+		```
+
+
+	Compilación: 
+
+		Transformar el archivo de código en un programa que la computadora pueda leer y entender. 
+
+		```
+		javac HolaMundo.java
+
+		```
+
+		Generará un archivo llamado 'HolaMundo.class'.
+
+
+	Ejecución: 	
+
+		Usar el programa. 
+
+		```
+		java HolaMundo
+
+		```
+
+
+
+|| Buenas prácticas
+
+
+	1. Convenciones de Nombres:
+
+    	Clases y Métodos: 
+
+    		Usa nombres de clases y métodos significativos y en camelCase (ej. 'MiClase', 'miMetodo()').
+
+    	Variables: 
+
+    		Usa nombres de variables en camelCase y evita nombres de una sola letra (excepto para contadores en bucles).
+
+
+	2. Comentarios Significativos:
+
+	    Usa comentarios para explicar el propósito y la lógica detrás del código.
+
+	    Evita comentarios innecesarios que simplemente repitan lo que hace el código.
+
+
+	3. Organización del Código:
+
+	    Paquetes: 
+
+	    	Organiza tus clases en paquetes lógicos y sigue la convención de nombres de paquetes invertidos (ej. 'com.ejemplo.miproyecto').
+
+	    Importaciones: 
+
+	    	Limita las importaciones a lo esencial y evita importar clases enteras cuando solo necesitas unas pocas.
+
+
+	4. Manejo de Excepciones:
+
+	    No ignores las excepciones. Trata las excepciones o lánzalas si no puedes manejarlas adecuadamente.
+
+	    Usa excepciones específicas en lugar de excepciones genéricas.
+
+
+	5. Uso de Constantes:
+
+	    Usa constantes para valores que no cambian ('final static').
+
+	    Usa nombres en mayúsculas con subrayados para constantes (ej. 'MAXIMO_VALOR').
+
+
+	6. Programación Defensiva:
+
+	    Valida las entradas de los usuarios y las entradas externas para evitar errores.
+
+	    Usa assertions ('assert') para verificar condiciones que siempre deben ser verdaderas.
+
+
+	7. Evitar el Uso Excesivo de Estática:
+
+	    Evita clases y métodos estáticos si no son realmente necesarios.
+
+	    Prefiere la inyección de dependencias en lugar de métodos y variables estáticas.
+
+
+	8. Programación Orientada a Objetos (OOP):
+
+	    Aplica los principios 'SOLID'.
+	    Evita el acoplamiento excesivo entre clases.
+
+
+	9. Uso Efectivo de Colecciones:
+
+	    Elije la implementación de colecciones adecuada para tu caso de uso.
+
+	    Utiliza generics para hacer que tus colecciones sean más seguras y legibles.
+
+
+	10. Testing:
+
+	    Escribe pruebas unitarias para tus clases y métodos.
+	    Usa frameworks de pruebas como 'JUnit'.
+
+
+	11. Mantén un Estilo Consistente:
+
+	    Adopta un estilo de codificación consistente en todo el proyecto.
+
+	    Usa sangrías y espacios de manera coherente.
+
+
+	12. Versionado y Control de Código:
+
+	    Utiliza un sistema de control de versiones como 'Git'.
+
+	    Etiqueta las versiones de tu software.
+
+
+
+|| Buenas prácticas Tipado
+
+
+	Genéricos:
+
+	    Utiliza Genéricos para Hacer Código Reutilizable y Seguro. 
+
+	    Donde sea posible, utiliza genéricos para crear clases y métodos que sean más flexibles y seguros en términos de tipos.
+
+
+	    Evita el uso de raw types (tipos sin parámetros) en favor de tipos genéricos.
+
+	    Proporciona parámetros de tipo siempre que sea posible.
+
+	    ```java
+
+	    // Evita esto:
+		List lista = new ArrayList();
+
+		// Prefiere esto:
+		List<String> lista = new ArrayList<>();
+
+	    ```
+
+
+	Casting: 
+
+		Utiliza Castings con Cuidado.
+
+		Limita el uso de castings y utilízalos solo cuando sea necesario. 
+
+		Si encuentras la necesidad frecuente de realizar castings, revisa la estructura de tu código.
+
+		```java
+
+		// Evita esto:
+		double resultado = (double) numerador / denominador;
+
+		// Mejor así:
+		double resultado = (double) numerador / (double) denominador;
+
+		```
+
+
+	Enums:
+
+    	Usa enums para representar conjuntos de constantes relacionadas. 
+
+    	Esto mejora la legibilidad del código y evita errores tipográficos.
+
+    	```java
+
+    	// Evita esto:
+		public static final int LUNES = 1;
+		public static final int MARTES = 2;
+
+		// Mejor así:
+		public enum Dia {
+		    LUNES, MARTES
+		}
+
+    	```
+
+
+    Valores Nulos:
+    	
+    	Intenta evitar el uso excesivo de null en tus programas. 
+
+    	Utiliza objetos nulos con moderación y considera otras estrategias, como Optional (introducido en Java 8), para representar la ausencia de valor de manera más explícita.
+
+    	```java
+
+    	// Evita esto:
+		String nombre = null;
+
+		// Mejor así:
+		Optional<String> nombreOptional = Optional.ofNullable(nombre);
+
+    	```
+
+
+    Immutabilidad:
+
+    	Prefiere Objetos Inmutables.
+
+    	Donde sea posible, utiliza objetos inmutables para mejorar la seguridad y la predictibilidad del código.
+
+
+    	```java
+
+    	// Evita esto:
+		public class MutablePersona {
+		    private String nombre;
+
+		    public void setNombre(String nombre) {
+		        this.nombre = nombre;
+		    }
+		}
+
+		// Mejor así:
+		public final class PersonaInmutable {
+		    private final String nombre;
+
+		    public PersonaInmutable(String nombre) {
+		        this.nombre = nombre;
+		    }
+
+		    public String getNombre() {
+		        return nombre;
+		    }
+		}
+
+    	```
+
+
+
+|| Buenas prácticas Variables
+	
+
+	Nombres Descriptivos:
+		
+		Usa nombres descriptivos y significativos para tus variables globales para mejorar la legibilidad del código.
+
+		```java
+
+		// Evita esto:
+		int x;
+
+		// Mejor así:
+		int contadorDeUsuarios;
+
+		```
+
+
+	Inicialización Antes de Uso:
+
+		Asegúrate de inicializar tus variables locales antes de usarlas para evitar errores.
+
+		```java
+
+		// Evita esto:
+		int y;
+		// ... código ...
+		System.out.println(y);  // Error: variable y podría no haber sido inicializada
+
+		// Mejor así:
+		int y = 5;
+		// ... código ...
+		System.out.println(y);
+
+		```
+
+
+	Minimiza el Uso de Variables Globales:
+
+		Evita el uso excesivo de variables globales (atributos de clase) y utiliza la encapsulación adecuada. 
+
+		Prefiere pasar datos entre métodos o clases mediante parámetros y retorno de valores.
+
+
+
+	Minimiza el Ámbito de las Variables:
+		
+		Limita el ámbito de tus variables locales tanto como sea posible.
+
+		Decláralas donde las necesitas y no antes.
+
+		```java
+
+		// Evita esto:
+		int x;
+		// ... código ...
+		x = 10;
+
+		// Mejor así:
+		// ... código ...
+		int x = 10;
+
+		```
+
+
+	Evita el Uso de Variables Globales Mutables:
+
+		Si debes usar variables globales, intenta que sean inmutables siempre que sea posible. 
+
+		Las variables globales mutables pueden ser fuente de problemas de concurrencia y dificultar el rastreo de errores.
+
+
+	Usa Modificadores de Acceso Apropiados:
+
+		Usa modificadores de acceso como 'private', 'protected' y 'public' para controlar la visibilidad de tus variables globales y proporcionar la encapsulación adecuada.
+
+		```java
+
+		// Evita esto:
+		public class Ejemplo {
+		    int variableGlobal;  // Debería ser private o protected
+		}
+
+		// Mejor así:
+		public class Ejemplo {
+		    private int variableGlobal;
+		}
+
+		```
+
+
+
+
+|| Buenas prácticas Memoria
+
+	La administración de memoria es manejada por el recolector de basura (garbage collector), lo que facilita en gran medida la tarea de los programadores al liberarlos de la responsabilidad directa de asignar y liberar memoria. 
+
+
+	Referencias Nulas:
+
+    	Evita Referencias Nulas Innecesarias.
+
+    	Intenta mantener las referencias nulas al mínimo. Cuando una variable ya no se necesita, asignarle null puede ayudar al recolector de basura a liberar la memoria.
+
+
+    	```java
+
+    	// Evita esto:
+		MiObjeto objeto = new MiObjeto();
+		// ... código ...
+		objeto = null;  // Esto puede ser innecesario
+
+		// Mejor así:
+		MiObjeto objeto = new MiObjeto();
+		// ... código ...
+		// No asigna null si la variable está fuera de alcance y no se necesita más
+
+    	```
+
+
+    Objetos Inútiles:
+
+    	Evita Crear Objetos Inútiles.
+    	
+    	Minimiza la creación de objetos temporales que podrían generarse durante la ejecución de tu programa.
+
+    	Puedes reutilizar objetos o utilizar tipos primitivos cuando sea posible.
+
+    	```java
+
+    	// Evita esto:
+		String resultado = "Hola" + " " + "Mundo";
+
+		// Mejor así:
+		String saludo = "Hola";
+		String mundo = "Mundo";
+		String resultado = saludo + " " + mundo;
+
+    	```
+
+
+    Ciclo de Vida de los Objetos:
+
+    	Comprende el Ciclo de Vida de los Objetos.
+    	
+    	Entiende cómo funciona el recolector de basura y cuándo se ejecuta. 
+
+    	Aprende sobre las fases del ciclo de vida de los objetos (creación, uso, obsolescencia, recolección) y cómo pueden afectar el rendimiento.
+
+
+    Manejo de Recursos Externos:
+
+    	Cierra Recursos Externos.
+    	
+    	Si estás trabajando con recursos externos como archivos, bases de datos o conexiones de red, asegúrate de cerrar esos recursos cuando ya no sean necesarios para liberar cualquier recurso asociado.
+
+    	```java
+
+    	// Ejemplo con archivos
+		try (FileInputStream fis = new FileInputStream("archivo.txt")) {
+		    // ... código ...
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+
+    	```
+
+
+    Uso Cauteloso de finalize():
+
+    	Evita Dependencias en 'finalize()'.
+    
+    	Evita depender en exceso del método 'finalize()' para liberar recursos. 
+
+    	Este método no garantiza la liberación inmediata y no debería ser utilizado como principal mecanismo de liberación de recursos.
+
+
+	Perfil de Memoria:
+
+    	Utiliza Herramientas de Perfil de Memoria.
+
+    	Usa herramientas de perfil de memoria para identificar posibles fugas de memoria y optimizar el uso de la memoria en tu aplicación.    
+
+
+    Optimización Prematura:
+
+    	Evita la Optimización Prematura.
+
+    	No te obsesiones con la optimización antes de que sea necesario. 
+
+    	Escribir código claro y mantenible es prioritario.
+
+    	La optimización prematura a menudo conduce a complicaciones innecesarias.
+
+
+    El recolector de basura es una parte fundamental de Java que simplifica en gran medida la administración de la memoria. 
+
+    En la mayoría de los casos, confiar en él es suficiente, y las prácticas anteriores están más orientadas a situaciones específicas y a mejorar la eficiencia en casos particulares.
+
+
+
+|| Variables
+
+
+
+
+|| Void
+
+
+
+
+|| Swap variables
 
 
 
