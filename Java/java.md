@@ -1677,15 +1677,253 @@
 
 || Variables
 
+	Contenedor que almacena datos que pueden ser modificados durante la ejecución de un programa.
+
+	Tienen un nombre, un tipo de datos y un valor.
+
+	```java
+
+	// Sintaxis básica de declaración de variable
+	tipoDato nombreVariable;
+
+	// Ejemplos
+	int edad;
+	double salario;
+	String nombre;
+
+	// Inicialización de variables
+	edad = 25;
+	salario = 50000.0;
+	nombre = "Juan";
+
+	```
 
 
+	Tipos de datos: 
 
-|| Void
+		Java es un lenguaje fuertemente tipado, lo que significa que cada variable debe tener un tipo de datos específico.
 
+		Primitivos: 
+
+			int, double, float, char, boolean, etc.
+    	
+    	Objetos: 
+
+    		String, ArrayList, HashMap, etc.
+    	
+    	Tipos Personalizados: 
+
+    		Clases que defines en tu código.
+
+
+   	Convención de Nombres de Variables:
+
+		Los nombres de variables en Java deben comenzar con una letra, un guion bajo (_) o el símbolo del dólar ($).
+
+		Los nombres de variables distinguen entre mayúsculas y minúsculas (son sensibles a mayúsculas y minúsculas).
+
+		Es una buena práctica seguir la convención de nomenclatura camelCase para nombres de variables (miVariable, nombrePersona, etc.).
+
+
+	Ámbito de Variables:
+
+		El ámbito de una variable define la parte del programa donde la variable puede ser utilizada. 
+
+		En Java, el ámbito de una variable está determinado por el bloque de código en el que se declara.
+
+
+	```java	
+
+	public class EjemploVariables {
+	    public static void main(String[] args) {
+	        // Declaración e inicialización de variables
+	        int edad = 25;
+	        double salario = 50000.0;
+	        String nombre = "Juan";
+
+	        // Mostrar valores de variables
+	        System.out.println("Nombre: " + nombre);
+	        System.out.println("Edad: " + edad);
+	        System.out.println("Salario: " + salario);
+	    }
+	}
+
+	```
+	
+	Se declaran valores y se imprimen en la consola. 
 
 
 
 || Swap variables
+	
+	Intercambio de valores entre dos variables. 
+
+	Es una operación común y útil, y en Java, se puede realizar de varias maneras. 
+
+	La idea principal es intercambiar los valores almacenados en dos variables sin la necesidad de una variable temporal adicional.
+
+
+	1. Usando una Variable Temporal: 
+
+	```java
+
+	public class SwapEjemplo {
+
+	    public static void main(String[] args) {
+	        // Declaración e inicialización de variables
+	        int a = 5;
+	        int b = 10;
+
+	        // Mostrar valores originales
+	        System.out.println("Antes del swap: a = " + a + ", b = " + b);
+
+	        // Swap usando una variable temporal
+	        int temp = a;
+	        a = b;
+	        b = temp;
+
+	        // Mostrar valores después del swap
+	        System.out.println("Después del swap: a = " + a + ", b = " + b);
+	    }
+	}
+
+	```
+
+
+	2. Sin Usar Variable Temporal (Usando Operadores Aritméticos):
+
+	```java
+
+	public class SwapEjemplo {
+
+	    public static void main(String[] args) {
+	        // Declaración e inicialización de variables
+	        int a = 5;
+	        int b = 10;
+
+	        // Mostrar valores originales
+	        System.out.println("Antes del swap: a = " + a + ", b = " + b);
+
+	        // Swap sin usar variable temporal
+	        a = a + b;
+	        b = a - b;
+	        a = a - b;
+
+	        // Mostrar valores después del swap
+	        System.out.println("Después del swap: a = " + a + ", b = " + b);
+	    }
+	}
+
+	```
+
+
+	3. Sin Usar Variable Temporal (Usando XOR):
+
+	```java
+
+	public class SwapEjemplo {
+
+	    public static void main(String[] args) {
+	        // Declaración e inicialización de variables
+	        int a = 5;
+	        int b = 10;
+
+	        // Mostrar valores originales
+	        System.out.println("Antes del swap: a = " + a + ", b = " + b);
+
+	        // Swap sin usar variable temporal usando XOR
+	        a = a ^ b;
+	        b = a ^ b;
+	        a = a ^ b;
+
+	        // Mostrar valores después del swap
+	        System.out.println("Después del swap: a = " + a + ", b = " + b);
+	    }
+	}
+
+	```
+
+	Operador XOR: 
+
+		El operador XOR (Exclusivo o) es un operador lógico que se utiliza para determinar si solo una de las dos expresiones es verdadera. 
+
+		Si una de las expresiones es verdadera y la otra es falsa, el resultado es verdadero. 
+
+		Si ambas expresiones son verdaderas o ambas son falsas, el resultado es falso.
+
+
+
+|| Public, Private, Protected Default, Static, Void
+
+	Los modificadores de acceso permiten dar un nivel de seguridad mayor a nuestras aplicaciones restringiendo el acceso a diferentes atributos, métodos, constructores asegurándonos que el usuario deba seguir una "ruta" especificada por nosotros para acceder a la información.
+
+	El encapsulamiento busca de alguna forma controlar el acceso a los datos que conforman un objeto o instancia, de este modo podríamos decir que una clase y por ende sus objetos que hacen uso de modificadores de acceso (especialmente privados) son objetos encapsulados.
+
+	Siempre que se use una clase de otro paquete, se debe importar usando import. 
+
+	Cuando dos clases se encuentran en el mismo paquete ('package') no es necesario hacer el import pero esto no significa que se pueda acceder a sus componentes directamente. 
+
+
+	public:
+
+		Es un modificador de acceso que indica que el método es accesible desde cualquier otra clase. 
+
+		En otras palabras, el método puede ser llamado desde cualquier parte del código, ya sea dentro de la misma clase, desde otras clases en el mismo paquete o desde clases en otros paquetes.
+
+
+	private:
+
+		Es el más restrictivo de todos, cualquier elemento de una clase que sea privado puede ser accedido únicamente por la misma clase y nada más. 
+
+		Es decir, si por ejemplo, un atributo es privado solo puede ser accedido por lo métodos o constructores de la misma clase. 
+
+		Ninguna otra clase sin importar la relación que tengan podrá tener acceso a ellos.
+
+		Generalmente el acceso a los atributos se consigue por medio de los métodos 'get()' y 'set()', pues es estrictamente necesario que los atributos de una clase sean privados.
+
+		Siempre se recomienda que los atributos de una clase sean privados y por tanto cada atributo debe tener sus propios métodos get y set para obtener y establecer respectivamente el valor del atributo.
+
+
+	protected: 
+
+		Nos permite acceso a los componentes con 'protected' desde la misma clase, clases del mismo paquete y clases que hereden de ella (incluso en diferentes paquetes).
+
+		Un error común pensar que se puede crear un objeto (instancia) de la clase madre y luego acceder al atributo con acceso protected sin problemas, sin embargo esto no es cierto, puesto que el modificador 'protected' lo que nos permite es acceder al atributo heredado desde el ámbito de la clase hija y no directamente.
+
+
+	default: 
+
+		Java nos da la opción de no usar un modificador de acceso y al no hacerlo, el elemento tendrá un acceso conocido como defaulto acceso por defecto que permite que tanto la propia clase como las clases del mismo paquete accedan a dichos componentes (de aquí la importancia de declararle siempre un 'paquete' a nuestras clases).
+
+
+	static: 
+
+		Indica que el método pertenece a la clase en lugar de una instancia específica de la clase. 
+
+		Esto significa que el método puede ser llamado sin necesidad de crear una instancia de la clase. 
+
+		Los métodos estáticos se asocian directamente con la clase y no con objetos individuales de esa clase.
+
+
+	void: 
+
+		Es el tipo de dato de retorno del método. 
+
+		En Java, void significa que el método no devuelve ningún valor. 
+
+		Es decir, el método realiza ciertas operaciones, pero no produce un resultado que pueda ser utilizado por el código que lo llamó.
+
+		El resultado no se utilizará más adelante. 
+
+
+
+|| Parámetros
+
+
+
+
+|| Input
+
 
 
 
