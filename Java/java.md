@@ -1918,13 +1918,251 @@
 
 
 || Parámetros
+	
+	Son valores que se pasan a un método durante su invocación.
+
+	Permiten que un método acepte datos desde el exterior, lo que le proporciona la flexibilidad de trabajar con diferentes valores en cada llamadas.
+	
+	```java
+
+	// Declaración de un método con parámetros
+	public void miMetodo(int parametro1, String parametro2) {
+	    // Cuerpo del método que utiliza los parámetros
+	    // ...
+	}
+
+	```
+
+	Cuando este método es llamado, se espera que se le proporcionen un valor 'int' y una cadena ('String') como argumentos.
+
+
+	```java
+
+	// Llamada al método con argumentos
+	miObjeto.miMetodo(10, "Hola");
+
+	```
+
+
+	1. Parámetro de valor: 
+
+		En Java, los parámetros se pasan por valor, lo que significa que se pasa una copia del valor real al método.
+    	
+    	Si se modifica el valor del parámetro dentro del método, no afectará al valor original fuera del método.
+
+    	```java
+
+    	public void duplicar(int x) {
+		    x = x * 2;
+		}
+
+		int numero = 5; 
+		duplicar(numero);
+		System.out.println(numero); // Imprimirá 5, no 10
+
+    	```
+
+
+    2. Parámetros de Referencia:
+
+    	Cuando se pasa un objeto como parámetro, se está pasando una referencia al objeto, no una copia de los datos.
+
+    	Si se modifica el contenido del objeto dentro del método, los cambios se reflejarán fuera del método.
+		
+
+    	```java
+
+    	public void modificarLista(List<String> lista) {
+		    lista.add("Nuevo elemento");
+		}
+
+		List<String> miLista = new ArrayList<>();
+		modificarLista(miLista);
+		System.out.println(miLista); // Imprimirá [Nuevo elemento]
+
+    	```
+
+    	Creamos el objeto 'miLista' de tipo 'List<String>' para usar el método 'modificarLista' que acepta como argumento un objeto 'List<String>'.
+
+
+    3. Número y Tipo de Parámetros:
+
+    	Un método puede tener cero o más parámetros.
+    
+    	El tipo y el orden de los parámetros deben coincidir entre la declaración del método y su llamada.
+
+
+    4. Parámetros de Varargs:
+
+    	Java también admite parámetros de longitud variable (varargs) que permiten pasar un número variable de argumentos del mismo tipo al método.
+
+    	```java
+
+		public void imprimirValores(int... valores) {
+		    for (int valor : valores) {
+		        System.out.println(valor);
+		    }
+		}
+
+		imprimirValores(1, 2, 3, 4);
+
+    	```
+
+
+	5. Expresión 'main(String[] args){}': 
+
+		Se refiere al método principal (main method) que sirve como punto de entrada para la ejecución de un programa Java.
+
+		main: 
+
+			Este es el nombre del método principal en Java. 
+
+			Es el método que se ejecuta primero cuando se inicia un programa Java.
+
+
+		String[] args: 
+
+			Este es el parámetro del método main. 
+
+			String[] indica que es un array (arreglo) de objetos de tipo String. 
+
+			El parámetro args es un nombre comúnmente utilizado, pero podría ser cualquier otro nombre válido. 
+
+			Este parámetro se utiliza para pasar argumentos desde la línea de comandos al programa Java cuando se ejecuta.
+
+
+		```java
+
+		public class MiPrograma {
+		    public static void main(String[] args) {
+		        System.out.println("¡Hola, mundo!");
+		        
+		        // Imprimir los argumentos pasados al programa
+		        for (String arg : args) {
+		            System.out.println("Argumento: " + arg);
+		        }
+		    }
+		}
+
+		```
+
+		El programa simplemente imprime "¡Hola, mundo!" en la consola y luego imprime cualquier argumento que se haya pasado al programa en la línea de comandos.
+
+		Cuando ejecutas un programa Java desde la línea de comandos, puedes proporcionar argumentos adicionales después del nombre del programa.
+
+		```bash
+
+		java MiPrograma arg1 arg2 arg3
+
+		```
+
+		'arg1', 'arg2' y 'arg3' serían elementos del array args que se pasan al método main.
+
+		Estos argumentos pueden ser utilizados por el programa para personalizar su comportamiento según sea necesario.
+
+
+	6. Parámetro 'List<String>':
+
+		Es un tipo de parámetro genérico que se utiliza para indicar que el parámetro esperado es una lista que contiene elementos de tipo 'String'.	
+
+		List: 
+
+			Es una interfaz en Java que representa una colección ordenada. 
+
+			Las implementaciones comunes de List incluyen 'ArrayList', 'LinkedList', y 'Vector'. 
+
+			Una lista permite almacenar elementos en un orden específico y proporciona métodos para acceder, agregar, eliminar y modificar elementos.
+
+
+		String: 
+
+			Es el tipo de elemento que se espera en la lista. 
+
+			En este caso, se espera que la lista contenga elementos de tipo 'String'
+
+
+		```java
+
+    	public void procesarLista(List<String> lista) {
+		    // Código para procesar la lista de Strings
+		    for (String elemento : lista) {
+		        System.out.println(elemento);
+		    }
+		}
+
+		// Llamada al método con una lista de Strings
+		List<String> miLista = Arrays.asList("Uno", "Dos", "Tres");
+		procesarLista(miLista);
+
+    	```
+
+		'procesarLista' es un método que toma una lista de Strings como parámetro ('List<String>'), y se llama al método con una lista específica ('miLista'), que contiene los elementos "Uno", "Dos" y "Tres".
+
+		El uso de tipos genéricos, como 'List<String>', proporciona flexibilidad y seguridad de tipos al trabajar con colecciones, ya que permite especificar el tipo de elementos que se espera dentro de la colección.    	
+
+
+	7. Expresión readList'(List<String> list)':
+
+		Se refiere a la declaración de un método llamado 'readList' que toma un parámetro de tipo 'List<String>'.    	
+
+		readList: 
+
+			Este es el nombre del método. 
+
+			En este caso, se llama readList.
+
+
+    	(List<String> list): 
+
+    		Esto define los parámetros del método.
+
+    		En este caso, hay un único parámetro llamado list, que es de tipo 'List<String>'. 
+
+    		Esto significa que 'list' es una lista que contiene elementos de tipo String.		
+
+		```java
+
+		import java.util.List;
+
+		public class EjemploMetodo {
+		    public static void main(String[] args) {
+		        // Crear una lista de cadenas
+		        List<String> listaCadenas = List.of("Hola", "Mundo", "!");
+
+		        // Llamar al método readList pasando la lista como argumento
+		        readList(listaCadenas);
+		    }
+
+		    // Definición del método readList
+		    public static void readList(List<String> list) {
+		        // Iterar sobre la lista e imprimir cada elemento
+		        for (String elemento : list) {
+		            System.out.println(elemento);
+		        }
+		    }
+		}
+
+		```    		
+
+		'readList' es un método que imprime cada elemento de una lista de cadenas que recibe como argumento. 
+
+		Cuando se llama al método 'readList' desde el método 'main', se pasa la lista 'listaCadenas' como argumento.
+
+		Luego, el método 'readList' itera sobre esta lista e imprime cada elemento en la consola.
+
+
+
+|| User Input
 
 
 
 
-|| Input
+|| Expressions
 
 
 
+|| GUI
 
 
+
+|| Math
