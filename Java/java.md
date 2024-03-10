@@ -2024,11 +2024,18 @@
 
 			Este es el parámetro del método main. 
 
-			String[] indica que es un array (arreglo) de objetos de tipo String. 
+			'String[]' indica que es un array (arreglo) de objetos de tipo String. 
 
-			El parámetro args es un nombre comúnmente utilizado, pero podría ser cualquier otro nombre válido. 
+			El parámetro 'args' es un nombre comúnmente utilizado, pero podría ser cualquier otro nombre válido. 
 
 			Este parámetro se utiliza para pasar argumentos desde la línea de comandos al programa Java cuando se ejecuta.
+
+			String es el tipo de datos que admite todos los tipos de datos primitivos como int, long, float, double, byte, shot, char.
+
+			String es el único tipo (inmutable) que puede representar todos los valores posibles que puede proporcionar el usuario en la línea de comando.
+
+			De lo contrario, la JVM no reconocerá el método principal como un método de punto de partida o entrada.
+
 
 
 		```java
@@ -2060,6 +2067,47 @@
 
 		Estos argumentos pueden ser utilizados por el programa para personalizar su comportamiento según sea necesario.
 
+
+		Mostrar argumentos de la terminal: 
+
+			En Java, args contiene los argumentos de la línea de comandos proporcionados como una matriz de objetos String.
+
+			Si ejecutamos en la terminal: 
+
+			```
+			java MiPrograma uno dos
+
+			```
+
+			entonces los argumentos contendrán ["uno", "dos"].
+
+			Si desea generar el contenido de los argumentos, puede recorrerlos:
+
+			```java
+
+			public class mostrarArgs {
+			    
+			    public static void main (String [] args) {
+			        
+			        for(int i = 0; i < args.length; i++) {
+			             
+			            System.out.println(args[i]);
+			        }
+			    }
+			}
+
+			```
+
+			El programa imprimirá en la terminal:
+
+			```
+			java MiPrograma uno dos
+			
+			```
+			>>uno
+			>>dos
+			    
+			
 
 	6. Parámetro 'List<String>':
 
