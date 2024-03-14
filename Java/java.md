@@ -2202,15 +2202,565 @@
 
 || User Input
 
+	Se refiere a la información que un programa recibe del usuario durante su ejecución.
+
+	
+	Clase Scanner: 	
+
+		Desde la biblioteca estándar 'java.util'
+
+
+	```java
+
+	import java.util.Scanner;
+
+	public class UserInputExample {
+	    public static void main(String[] args) {
+	        // Crear un objeto Scanner para leer la entrada del usuario
+	        Scanner scanner = new Scanner(System.in);
+
+	        // Solicitar al usuario que ingrese un valor
+	        System.out.print("Ingrese un número: ");
+
+	        // Leer la entrada del usuario y almacenarla en una variable
+	        int numeroIngresado = scanner.nextInt();
+
+	        // Mostrar el valor ingresado por el usuario
+	        System.out.println("Número ingresado: " + numeroIngresado);
+
+	        // Cerrar el objeto Scanner para liberar recursos
+	        scanner.close();
+	    }
+	}
+
+	```
+
+	1. Importamos la clase 'Scanner' desde el paquete java.util.
+
+    2. Creamos un objeto Scanner llamado 'scanner' que está asociado a la entrada estándar ('System.in'), que generalmente corresponde al teclado.
+
+    3. Usamos el método 'nextInt()'' para leer un entero que el usuario ingrese.
+
+    4. Mostramos el número ingresado por el usuario en la consola.
+
+	5. Cerramos el objeto 'Scanner' para liberar recursos.    
+    
+
+	Ten en cuenta que el manejo de excepciones, como 'InputMismatchException', puede ser necesario para manejar casos en los que el usuario ingrese datos que no coincidan con el tipo esperado.
 
 
 
 || Expressions
+	
+	Combinación de variables, operadores y valores que produce un resultado.
 
+	Operadores: 
+
+		Símbolos que indican la operación a realizar entre operandos.
+
+	Operandos: 
+
+		Son las variables o valores con los que se realiza la operación. 
+
+	```java
+
+	int resultado = 5 + 3;  // En esta expresión, 5 y 3 son operandos;  "+" es el operador de suma.
+
+	```
+
+	Variables: 
+
+		Son nombres que representan valores almacenados en la memoria.
+
+	```java
+
+	int x = 10;
+	int y = 20;
+	int suma = x + y;  // x + y es una expresión que utiliza las variables x e y.
+
+	```
+
+	1. Expresiones Aritméticas:
+
+		Realizan operaciones matemáticas.
+
+	```java
+
+	int resultado = 10 * (3 + 5);  // Expresión aritmética que utiliza paréntesis.
+	
+	```
+
+
+	2. Expresiones Relacionales: 
+
+		Evalúan condiciones y producen resultados booleanos.
+
+	```java
+
+	boolean esMayor = (x > y);  // Expresión relacional que evalúa si x es mayor que y.
+
+	```
+
+
+	3. Expresiones Lógicas: 
+
+		Realizan operaciones lógicas y producen resultados booleanos.
+
+	```java
+
+	boolean andLogico = (x > 0) && (y > 0);  // Expresión lógica con operador AND.
+
+	```
+
+
+	4. Expresiones Condicionales (Ternarias): 
+
+		Son expresiones compactas para tomar decisiones basadas en una condición.
+
+	```java
+
+	int maximo = (x > y) ? x : y;  // Expresión condicional que asigna el máximo de x e y.
+
+	```		
+
+
+	Evaluación de Expresiones: 
+
+		Las expresiones se evalúan y producen un resultado. 
+
+		Este resultado puede ser almacenado en una variable, utilizado en una instrucción, o pasado como argumento a otro método.		
 
 
 || GUI
 
+	La Interfaz Gráfica de Usuario se refiere a la parte visual de una aplicación que permite a los usuarios interactuar con el programa mediante elementos gráficos como ventanas, botones, menús, campos de texto, etc. 
+
+	En Java, se utiliza el paquete javax.swing y otros componentes para construir interfaces gráficas.
 
 
-|| Math
+	Swing: 
+
+	1. JFrame: 
+
+		Es una ventana de nivel superior que sirve como contenedor principal para otros componentes de la interfaz gráfica.
+
+		```java
+
+		import javax.swing.JFrame;
+
+		public class MiVentana extends JFrame {
+		    // Constructor y otros métodos para configurar la ventana
+		}
+
+		```
+
+
+	2. JPanel: 
+
+		Es un contenedor ligero que se utiliza para organizar otros componentes dentro de un contenedor más grande, como un JFrame.
+
+		```java
+
+		import javax.swing.JPanel;
+
+		public class MiPanel extends JPanel {
+		    // Constructor y otros métodos para configurar el panel
+		}
+
+		```
+
+
+	3. Componentes Swing: 
+
+		Incluyen botones (JButton), etiquetas (JLabel), campos de texto (JTextField), áreas de texto (JTextArea), listas (JList), y muchos más. 
+
+		Estos componentes se utilizan para construir la interfaz gráfica.
+
+		```java
+
+		import javax.swing.JButton;
+		import javax.swing.JLabel;
+		import javax.swing.JTextField;
+
+		```
+
+
+	Ejemplo: 
+
+
+	```java
+
+	import javax.swing.JButton;
+	import javax.swing.JFrame;
+	import javax.swing.JPanel;
+
+	public class MiVentana extends JFrame {
+
+	    public MiVentana() {
+	        // Configurar la ventana
+	        setTitle("Mi Aplicación");
+	        setSize(400, 300);
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	        // Crear un panel
+	        JPanel panel = new JPanel();
+
+	        // Crear un botón
+	        JButton boton = new JButton("Haz clic");
+
+	        // Agregar el botón al panel
+	        panel.add(boton);
+
+	        // Agregar el panel a la ventana
+	        add(panel);
+	    }
+
+	    public static void main(String[] args) {
+	        // Crear una instancia de la ventana y hacerla visible
+	        MiVentana ventana = new MiVentana();
+	        ventana.setVisible(true);
+	    }
+	}
+
+	```
+
+	JFrame se utiliza como la ventana principal.
+
+    JPanel se utiliza como un contenedor para organizar componentes.
+
+    JButton se utiliza para crear un botón.
+
+
+    Event Listener: 
+
+    	Para que la interfaz gráfica sea interactiva, se utilizan escuchadores de eventos para responder a las acciones del usuario, como hacer clic en un botón. 
+
+    	Los escuchadores se implementan mediante interfaces como 'ActionListener'.
+
+    ```java
+
+    import javax.swing.JButton;
+	import javax.swing.JFrame;
+	import java.awt.event.ActionEvent;
+	import java.awt.event.ActionListener;
+
+	public class MiVentana extends JFrame implements ActionListener {
+
+	    public MiVentana() {
+	        // ...
+
+	        // Crear un botón
+	        JButton boton = new JButton("Haz clic");
+
+	        // Agregar un escuchador de eventos al botón
+	        boton.addActionListener(this);
+
+	        // ...
+	    }
+
+	    // Implementar el método actionPerformed para responder a eventos
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+	        System.out.println("Botón clicado");
+	    }
+	}
+
+
+    ```
+
+
+
+|| Math Class
+
+	Es parte del paquete 'java.lang' y proporciona un conjunto de métodos estáticos que realizan operaciones matemáticas comunes.
+
+	Estos métodos permiten realizar cálculos como funciones trigonométricas, exponenciación, logaritmos, redondeo, y otras operaciones matemáticas. 
+
+	Dado que los métodos de la clase Math son estáticos, puedes llamarlos directamente sin necesidad de crear una instancia de la clase.
+
+
+	Operaciones básicas: 
+
+		1. Math.abs(double a): 	
+
+			Devuelve el valor absoluto de un número	
+
+		```java
+
+		double valorAbsoluto = Math.abs(-5.5); // Devuelve 5.5
+
+		```
+
+
+		2. Math.max(double a, double b): 	
+
+			Devuelve el valor máximo entre dos números.
+
+		```java
+
+		double maximo = Math.max(10.5, 8.3); // Devuelve 10.5
+
+		```
+
+		3. Math.min(double a, double b): 
+
+			Devuelve el valor mínimo entre dos números.
+
+
+	Funciones Trigonométricas: 	
+
+		Math.sin(double a), Math.cos(double a), Math.tan(double a):
+
+
+	```java
+
+	double seno = Math.sin(Math.toRadians(30)); // Seno de 30 grados
+
+	```
+
+
+	Funciones Exponenciales y Logaritmos: 
+
+		1. Math.exp(double a):
+
+			Devuelve e elevado a la potencia de un número.
+
+		```java
+
+		double exponencial = Math.exp(2); // Devuelve e^2
+
+		```
+
+
+		2. Math.log(double a): 
+
+			Devuelve el logaritmo natural de un número.
+
+		```java
+
+		double logNatural = Math.log(10); // Devuelve el logaritmo natural de 10
+
+		```
+
+
+	Redondeo y Truncado:
+
+    	1. Math.round(double a):
+
+    		Redondea un número al entero más cercano.
+
+    	```java
+
+    	long redondeado = Math.round(3.8); // Devuelve 4
+
+    	```
+
+
+		2. Math.floor(double a), Math.ceil(double a):
+
+			Devuelve el número entero más grande menor o igual a 'a', o el número entero más pequeño mayor o igual a 'a', respectivamente.
+
+		```java
+
+		double haciaAbajo = Math.floor(5.7); // Devuelve 5.0
+		
+		double haciaArriba = Math.ceil(5.7);  // Devuelve 6.0
+
+		```
+
+
+|| Random numbers
+
+	Generación de números aleatorios se realiza a través de la clase 'java.util.Random'. 
+
+	Esta clase proporciona métodos para generar valores aleatorios de diferentes tipos de datos, como enteros, decimales y booleanos.
+
+
+	1. Creación de una Instancia de Random:
+		
+		Para utilizar la clase Random, primero necesitas crear una instancia de la misma.
+
+		```java
+
+		import java.util.Random;
+
+		// Crear una instancia de Random
+		Random random = new Random();
+
+		```
+
+
+	2. Generación de Enteros Aleatorios:
+
+		Puedes utilizar el método 'nextInt()' para generar un entero aleatorio.
+
+		```java
+
+		int numeroAleatorio = random.nextInt();
+
+		```
+
+
+		Puedes especificar un límite para el rango de números generados.
+
+		```java
+
+		// Generar un entero aleatorio entre 0 (inclusive) y 100 (exclusive)
+		
+		int numeroEnRango = random.nextInt(100);
+
+		```
+
+
+	3. Generación de Decimales Aleatorios:
+		
+		Para generar números decimales aleatorios, puedes utilizar 'nextDouble()'.
+
+		```java
+
+		double decimalAleatorio = random.nextDouble();
+
+		```
+
+
+	4. Generación de Booleanos Aleatorios:
+		
+		'nextBoolean()' genera un valor booleano aleatorio.
+
+		```java
+
+		boolean valorBooleano = random.nextBoolean();
+
+		```
+
+	Ejemplo completo: 
+
+	```java
+
+	import java.util.Random;
+
+	public class RandomExample {
+	    public static void main(String[] args) {
+	        // Crear una instancia de Random
+	        Random random = new Random();
+
+	        // Generar un entero aleatorio entre 1 y 10 (ambos inclusive)
+	        int numeroAleatorio = random.nextInt(10) + 1;
+
+	        // Generar un decimal aleatorio entre 0.0 (inclusive) y 1.0 (exclusive)
+	        double decimalAleatorio = random.nextDouble();
+
+	        // Generar un valor booleano aleatorio
+	        boolean valorBooleano = random.nextBoolean();
+
+	        // Imprimir los valores generados
+	        System.out.println("Número Aleatorio: " + numeroAleatorio);
+	        System.out.println("Decimal Aleatorio: " + decimalAleatorio);
+	        System.out.println("Valor Booleano Aleatorio: " + valorBooleano);
+	    }
+	}
+
+	```
+
+
+	Semilla (seed): 
+
+		La secuencia de números generada por la clase Random se basa en un algoritmo y, por lo tanto, si proporcionas la misma semilla, obtendrás la misma secuencia de números. 
+
+		En aplicaciones donde se requiere reproducibilidad, puedes establecer una semilla utilizando el método 'setSeed(long seed)'.		
+
+		```java
+
+		// Establecer una semilla para reproducibilidad
+		
+		random.setSeed(123);
+
+		```
+
+
+
+|| If
+
+
+
+
+
+
+|| Switch
+
+
+
+|| Operadores lógicos
+
+
+
+|| While
+
+
+
+|| For
+
+
+
+|| Nested Loop
+
+
+
+
+|| Array
+
+
+
+|| 2D Array
+
+
+
+|| For each
+
+
+
+|| Métodos
+
+
+
+
+|| Métodos sobrecargados
+
+
+
+
+|| Printf
+
+
+
+
+|| Final
+
+
+
+|| Objetos 
+
+
+
+|| Constructor 
+
+
+
+
+|| Ámbito de variable
+
+
+
+
+
+|| toString
+
+
+
+
+|| Array de Objetos
+
+
+
+||
+
