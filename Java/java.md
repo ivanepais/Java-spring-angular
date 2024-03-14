@@ -2681,24 +2681,453 @@
 
 || If
 
+	Se utilizan para tomar decisiones basadas en una condición.
+
+	```java
+
+	if (condición) {
+    	// Código a ejecutar si la condición es verdadera
+	}	
+
+	```
+
+	Condición: 
+
+		Es una expresión booleana que se evalúa como verdadera (true) o falsa (false). 
+
+		Si la condición es verdadera, el bloque de código dentro del if se ejecuta; de lo contrario, se salta.
 
 
+    Bloque de Código: 
+
+    	Es un conjunto de instrucciones encerradas entre llaves {}. 
+
+    	Este bloque de código se ejecuta solo si la condición especificada es verdadera.
+
+
+
+    Ejemplo:
+
+    ```java
+
+    int numero = 7;
+
+	if (numero > 5) {
+	    System.out.println("El número es mayor que 5");
+	}
+
+    ```
+
+    El código dentro del bloque if se ejecutará porque la condición numero > 5 es verdadera.
+
+
+    If-else: 
+
+		Especificar un bloque de código que se ejecutará si la condición en el if es falsa.
+
+	```java
+
+	if (condición) {
+	    // Código a ejecutar si la condición es verdadera
+	} else {
+	    // Código a ejecutar si la condición es falsa
+	}
+
+	```
+
+
+	Ejemplo: 
+
+	```java
+
+	int numero = 3;
+
+	if (numero > 5) {
+	    System.out.println("El número es mayor que 5");
+	} else {
+	    System.out.println("El número no es mayor que 5");
+	}
+
+	```
+
+	'numero' es 3, la condición del if es falsa, y se ejecutará el bloque de código dentro del else.
+
+
+	if-else if-else:
+
+		Encadenar múltiples condiciones utilizando else if para manejar varias opciones.
+
+	```java
+
+	if (condición1) {
+	    // Código a ejecutar si la condición1 es verdadera
+	} else if (condición2) {
+	    // Código a ejecutar si la condición1 es falsa y la condición2 es verdadera
+	} else {
+	    // Código a ejecutar si todas las condiciones anteriores son falsas
+	}
+
+	```
+
+	Ejemplo: 
+
+	```java
+
+	int numero = 0;
+
+	if (numero > 0) {
+	    System.out.println("El número es positivo");
+	} else if (numero < 0) {
+	    System.out.println("El número es negativo");
+	} else {
+	    System.out.println("El número es cero");
+	}
+
+	```
 
 
 
 || Switch
 
+	Se utiliza para tomar decisiones basadas en el valor de una expresión.
+
+	Proporciona una manera más limpia y eficiente de manejar múltiples casos en comparación con una serie de declaraciones if-else.
+
+	```java
+
+	switch (expresion) {
+	    case valor1:
+	        // Código a ejecutar si la expresión es igual a valor1
+	        break;
+	    case valor2:
+	        // Código a ejecutar si la expresión es igual a valor2
+	        break;
+	    // Otros casos...
+	    default:
+	        // Código a ejecutar si ninguno de los casos anteriores coincide
+	}
+
+	```
+
+	Expresión: 
+
+	    Es una expresión cuyo valor se compara con los diferentes casos. 
+
+	    Puede ser de tipo byte, short, char o int, o sus clases envolventes.
+
+
+    Caso (case): 
+
+    	Cada case especifica un valor posible de la expresión. 
+
+    	Si la expresión coincide con un case, el bloque de código asociado se ejecutará.
+
+
+    Break: 
+
+    	Es una palabra clave que se utiliza para salir de la estructura switch después de que se ha ejecutado un bloque de código asociado a un case. 
+
+    	Si se omite, la ejecución continuará en los casos siguientes, lo cual puede no ser el comportamiento deseado.
+
+
+    Default: 
+
+    	Es opcional y se ejecuta si ninguno de los casos anteriores coincide con la expresión. 
+
+    	Puedes pensar en default como el equivalente de else en una estructura if-else.
+
+
+    Ejemplo: 
+
+    ```java
+
+    int diaDeLaSemana = 3;
+	String nombreDia;
+
+	switch (diaDeLaSemana) {
+	    case 1:
+	        nombreDia = "Lunes";
+	        break;
+	    case 2:
+	        nombreDia = "Martes";
+	        break;
+	    case 3:
+	        nombreDia = "Miércoles";
+	        break;
+	    case 4:
+	        nombreDia = "Jueves";
+	        break;
+	    case 5:
+	        nombreDia = "Viernes";
+	        break;
+	    default:
+	        nombreDia = "Fin de semana";
+	}
+	System.out.println("Hoy es " + nombreDia);
+
+    ```
+
+    'diaDeLaSemana' tiene un valor de 3, por lo que se ejecutará el bloque de código asociado al case 3, y se imprimirá "Hoy es Miércoles".
+
+
+    La expresión en un switch solo puede ser de tipos primitivos o de la clase String a partir de Java 7. 
+
+    Además, ten en cuenta que, a partir de Java 12, la estructura switch se ha mejorado con la expresión de switch (Switch Expressions), lo que proporciona una forma más concisa y expresiva de manejar casos.
+
+
+
+|| Switch Expressions
+
+	Mejora de la expresión de switch se introdujo en Java 12 para proporcionar una forma más concisa y expresiva de manejar casos en comparación con la versión anterior de switch.
+
+	```java
+
+	public class SwitchExpressionsExample {
+	    public static void main(String[] args) {
+	        int diaDeLaSemana = 3;
+
+	        String nombreDia = switch (diaDeLaSemana) {
+	            case 1 -> "Lunes";
+	            case 2 -> "Martes";
+	            case 3 -> "Miércoles";
+	            case 4 -> "Jueves";
+	            case 5 -> "Viernes";
+	            default -> "Fin de semana";
+	        };
+
+	        System.out.println("Hoy es " + nombreDia);
+	    }
+	}
+
+	```
+
+	'switch' ahora se evalúa a un valor y ese valor se puede asignar directamente a una variable (nombreDia en este caso).
+	
+	La nueva sintaxis utiliza -> para asignar el resultado del case a la variable.
+
+
+	No hay necesidad de usar 'break' ni 'default'.
+
+	Además, puedes manejar múltiples valores en un solo case utilizando comas.
+
+	Ejemplo: 
+
+	```java
+
+	public class SwitchExpressionsExample2 {
+	    public static void main(String[] args) {
+	        String diaDeLaSemana = "Lunes";
+
+	        String tipoDia = switch (diaDeLaSemana) {
+	            case "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" -> "Día laboral";
+	            case "Sábado", "Domingo" -> "Fin de semana";
+	            default -> throw new IllegalStateException("Valor inesperado: " + diaDeLaSemana);
+	        };
+
+	        System.out.println("Tipo de día: " + tipoDia);
+	    }
+	}
+
+	```
 
 
 || Operadores lógicos
+
+	Permiten realizar operaciones lógicas entre valores booleanos o expresiones condicionales.
+
+	AND Lógico (&&):
+
+    	Sintaxis: 
+
+    		expresion1 && expresion2
+    	
+    	Devuelve true si ambas expresion1 y expresion2 son true; de lo contrario, devuelve false.
+				
+	    ```java
+
+	    boolean a = true;
+		boolean b = false;
+		boolean resultado = a && b; // resultado es false
+
+	    ```	
+
+
+	OR Lógico (||):
+
+	    Sintaxis: 
+
+	    	expresion1 || expresion2
+	    
+	    Devuelve true si al menos una de expresion1 o expresion2 es true; devuelve false si ambas son false.
+
+		```java
+
+		boolean a = true;
+		boolean b = false;
+		boolean resultado = a || b; // resultado es true
+
+		```
+
+
+	NOT Lógico (!):
+
+		Sintaxis: 
+
+			!expresion
+
+		Devuelve true si expresion es false, y viceversa.
+
+		```java
+
+		boolean a = true;
+		boolean resultado = !a; // resultado es false
+
+		```
+
+
+	Tabla de verdad: 
+
+		A 	B 	A&&B 	A||B 	!A
+		t 	t 	t 		t  	 	f
+		t 	f 	f 		t 		f
+		f 	t 	f 		t 		t
+		f 	f 	f 		f  		t
 
 
 
 || While
 
+	Se utiliza para repetir un bloque de código mientras una condición dada sea verdadera.	
+
+	```java
+
+	while (condición) {
+	    // Código a repetir mientras la condición sea verdadera
+	}
+
+	```
+
+	La 'condición' se evalúa antes de que se ejecute el bloque de código. 
+
+	Si la condición es 'true', el bloque de código se ejecuta.
+	
+	Después de la ejecución del bloque, la condición se vuelve a evaluar.
+
+	Si la condición sigue siendo 'true', el bloque se ejecutará nuevamente. 
+
+	Este proceso se repetirá hasta que la condición se evalúe como 'false', momento en el que el bucle 'while' se detendrá y la ejecución del programa continuará con la siguiente instrucción después del bucle.
+
+
+	```java
+
+	int contador = 1;
+
+	while (contador <= 5) {
+	    System.out.println("Número: " + contador);
+	    contador++;
+	}
+
+	```
+
+	'contador' se inicializa en 1.
+	La condición 'contador <= 5' se evalúa. 
+
+	Como es verdadera, se ejecuta el bloque de código dentro del bucle while.
+
+	El número se imprime en la consola, y luego contador se incrementa en 1.
+
+	La condición se vuelve a evaluar. 
+
+	Este proceso se repite hasta que contador alcanza el valor de 6, momento en el cual la condición se evalúa como false y el bucle while se detiene.
+
+	Asegúrate de que la condición eventualmente se vuelva false para que el bucle se detenga.
+
+
+	Es posible un while sin un bloque de código y usarlo para ejecutar múltiples instrucciones dentro del bucle:
+
+	```java
+
+	int contador = 1;
+
+	while (contador <= 5) {
+	    System.out.println("Número: " + contador);
+	    System.out.println("¡Hola!");
+	    contador++;
+	}
+
+	```
+
+	Las dos instrucciones dentro del bucle se ejecutarán repetidamente mientras la condición sea verdadera.
+
 
 
 || For
+
+	Es una estructura de control de flujo que se utiliza para repetir un bloque de código un número específico de veces.
+
+	```java
+
+	for (inicialización; condición; expresión de iteración) {
+	    // Código a repetir en cada iteración
+	}
+
+	```
+
+	Inicialización: 
+
+		Se realiza una vez al inicio del bucle y generalmente se utiliza para inicializar la variable de control del bucle.
+
+
+    Condición: 
+
+    	Se evalúa antes de cada iteración. 
+
+    	Si es true, el bucle continúa; si es false, el bucle se detiene.
+
+
+    Expresión de Iteración: 
+
+    	Se ejecuta después de cada iteración. 
+
+    	Generalmente se utiliza para modificar la variable de control del bucle.
+
+    ```java
+
+    for (int i = 1; i <= 5; i++) {
+	    System.out.println("Número: " + i);
+	}
+
+	```
+
+	int i = 1: 
+
+		La variable i se inicializa en 1.
+
+    i <= 5: 
+
+    	La condición es true mientras i sea menor o igual a 5.
+
+    i++: 
+
+    	Después de cada iteración, i se incrementa en 1.
+
+	El bucle se ejecutará cinco veces, imprimiendo los números del 1 al 5 en la consola.
+
+
+	Se puede utilizar para recorrer arreglos o collecciones de datos. 
+
+	```java
+
+	int[] numeros = {1, 2, 3, 4, 5};
+
+	for (int i = 0; i < numeros.length; i++) {
+	    System.out.println("Número: " + numeros[i]);
+	}
+
+	```
+
+	'i' se utiliza como el índice para acceder a cada elemento del arreglo numeros.
+
 
 
 
