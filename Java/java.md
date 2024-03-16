@@ -3130,18 +3130,339 @@
 
 
 
-
 || Nested Loop
 
+	Es un bucle contenido dentro de otro bucle.
+
+	Esto significa que hay un bucle dentro del cuerpo de otro bucle.
+
+	Puedes tener bucles anidados dentro de bucles anidados, creando así múltiples niveles de repetición.
+
+	```java
+
+	for (inicialización1; condición1; expresión de iteración1) {
+	    // Código del primer bucle
+
+	    for (inicialización2; condición2; expresión de iteración2) {
+	        // Código del segundo bucle (anidado)
+	    }
+
+	    // Más código del primer bucle (se ejecuta después del segundo bucle)
+	}
+
+	```
+
+
+	Ejemplo: 
+
+		Imprimir una tabla de multiplicar.
+
+
+	```java
+
+	for (int i = 1; i <= 5; i++) {
+	    for (int j = 1; j <= 5; j++) {
+	        System.out.print(i * j + "\t");
+	    }
+	    System.out.println(); // Salto de línea después de cada fila
+	}
+
+	```
+
+	El primer bucle for (bucle externo) itera sobre las filas de la tabla de multiplicar (números del 1 al 5).
+
+    El segundo bucle for (bucle interno) itera sobre las columnas de la tabla de multiplicar (también números del 1 al 5).
+
+    Dentro del bucle interno, se imprime el resultado de la multiplicación de i * j.
+
+
+    Salida: 
+
+    ```
+    1   2   3   4   5   
+	2   4   6   8   10  
+	3   6   9   12  15  
+	4   8   12  16  20  
+	5   10  15  20  25  
+
+    ```
+
+
+    Son útiles para tareas donde se requiere repetición en múltiples dimensiones, como matrices bidimensionales o para recorrer elementos de una colección anidada.
 
 
 
 || Array
+	
+	Permite almacenar múltiples valores del mismo tipo bajo un mismo nombre. 
+
+	Los elementos de un array son accesibles a través de un índice, que comienza en cero. 
+
+
+	1. Definición: 
+
+	```java
+
+	tipo[] nombreArray = new tipo[tamaño];
+
+	```	
+	
+	Tamaño:
+
+		El número de elementos que puede almacenar el array.
+
+
+	Ejemplo: 
+
+	```java
+
+	int[] numeros = new int[5];
+
+	```
+
+
+	2. Inicialización:
+
+		Inicializar array al mismo tiempo que lo declaras.
+
+	```java
+
+	int[] numeros = {1, 2, 3, 4, 5};
+
+	```
+
+
+	3. Acceso a Elementos: 
+
+		Mediante un índice que comienza con 0. 
+
+	```java
+
+	int primerNumero = numeros[0]; // Accede al primer elemento (índice 0)
+	
+	int segundoNumero = numeros[1]; // Accede al segundo elemento (índice 1)
+
+	```
+
+
+	4. Longitud:
+
+		La propiedad length se utiliza para obtener la longitud (número de elementos).
+
+	```java
+
+	int longitud = numeros.length;
+
+	```
+
+
+	5. Bucles y Arrays:
+
+		for y while, son comúnmente utilizados para recorrer los elementos de un array.
+
+	```java
+
+	int[] numeros = {1, 2, 3, 4, 5};
+
+	for (int i = 0; i < numeros.length; i++) {
+	    System.out.println(numeros[i]);
+	}
+
+	```		
 
 
 
 || 2D Array
+	
+	Array o matriz bidimensional, es un array cuyos elementos también son arrays. 
 
+	Es una estructura de datos que organiza datos en filas y columnas como una tabla. 
+
+
+	Sintaxis: 
+
+	```java
+
+	tipo[][] nombreArray = new tipo[filas][columnas];
+
+	```
+
+
+	Definición:
+
+	```java
+
+	int[][] matriz = new int[3][4];
+
+	```
+	Después agregamos elemenos al objeto 'matriz'. 
+
+
+	Definición e inicialización: 
+
+	```java
+
+	int[][] matriz = {
+	    {1, 2, 3},
+	    {4, 5, 6},
+	    {7, 8, 9}
+	};
+
+	```
+	crea una matriz de 3x3 e se inicializa con los valores proporcionados.
+
+
+	Acceso a elementos: 
+
+		Mediante dos índices, uno para la fila y otro para la columna. 
+		
+		Los índices comienzan en cero.	
+
+	```java
+
+	int elemento = matriz[1][2]; // Accede al elemento en la segunda fila y tercera columna.
+
+	```
+
+
+	Recorrer 2D Array: 
+
+
+	```java
+
+	int[][] matriz = {
+    	{1, 2, 3},
+    	{4, 5, 6},
+    	{7, 8, 9}
+	};
+
+	for (int i = 0; i < matriz.length; i++) {
+	    for (int j = 0; j < matriz[i].length; j++) {
+	        System.out.print(matriz[i][j] + " ");
+	    }
+	    System.out.println(); // Salto de línea después de cada fila
+	}
+
+	```
+
+	Salida: 
+
+	```
+	1 2 3 
+	4 5 6 	
+	7 8 9 
+	
+	```
+
+
+	2D Array irregular: 
+
+		No necesariamente tienen que tener el mismo número de elementos en cada fila.
+
+
+	```java
+
+	int[][] irregular = {
+    	{1, 2},
+    	{3, 4, 5},
+    	{6}
+	};
+
+	```		
+
+	La primera fila tiene 2 elementos, la segunda tiene 3, y la tercera tiene 1.	
+
+
+
+
+|| Usos Array
+
+
+	1. Colección y clasificación de la información: 
+
+		Almacenar un conjunto de datos relacionados, como una lista de nombres, edades, puntajes, etc.
+		
+		Ejemplo: String[] nombres = {"Alice", "Bob", "Charlie"};
+
+
+	2. Matrices y Tablas:
+
+    	Para representar matrices o tablas bidimensionales.
+    	
+    	Ejemplo: int[][] matriz = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+
+    3. Operaciones Matemáticas:
+
+    	Cuando estás realizando operaciones matemáticas o estadísticas en un conjunto de valores.
+    	
+    	Ejemplo: double[] precios = {10.99, 5.49, 8.75};
+
+
+    4. Iteración:
+
+    	Para simplificar la iteración sobre un conjunto de elementos.
+
+    	```java
+
+    	for (int i = 0; i < array.length; i++) {
+		    // Procesar cada elemento del array
+		    System.out.println(array[i]);
+		}
+
+    	```
+
+    5. Almacenamiento de Datos en Estructuras de Algoritmos:
+
+    	En algoritmos y estructuras de datos, los arrays son fundamentales para implementar estructuras más complejas como listas, colas, pilas, etc.
+
+
+	6. Entrada y Salida:
+
+	    Al manejar datos de entrada y salida, especialmente cuando se lee o se escribe en archivos o se interactúa con bases de datos.
+
+
+	7. Imágenes y Matrices Tridimensionales:
+
+	    En el procesamiento de imágenes y gráficos, donde las matrices bidimensionales o tridimensionales son comunes para representar píxeles.
+
+
+	8. Búsqueda y Ordenación:
+
+	    Cuando necesitas realizar operaciones de búsqueda y ordenación en conjuntos de datos.
+
+	    Ejemplo: Arrays.sort(array);
+
+
+	9. Representación de Elementos en Juegos:
+
+	    En el desarrollo de juegos, los arrays pueden usarse para representar elementos como personajes, objetos, niveles, etc.
+
+
+	10. Manipulación de Cadenas:
+
+	    Al trabajar con cadenas de texto, un array de caracteres (char[]) se utiliza para representar y manipular palabras o frases.
+
+
+
+|| String
+
+
+
+
+
+
+|| Wrapper Classes
+
+
+
+
+|| ArrayList
+
+
+
+
+|| 2D ArrayList
 
 
 || For each
