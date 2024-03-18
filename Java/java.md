@@ -3447,26 +3447,640 @@
 
 || String
 
+	Representa una secuencia de caracteres. 
+
+	Es una de las clases más utilizadas y es parte del paquete 'java.lang', lo que significa que no es necesario importarla explícitamente en tus programas de Java, ya que se importa automáticamente.
+
+	```java
+
+	String mensaje = "Hola, mundo!";  // Declaración e inicialización en una línea
+	String saludo;                      // Declaración
+	saludo = "¡Hola, Java!";            // Inicialización posterior
+
+	```
+
+
+	Operaciones:
+
+		Las cadenas en Java son inmutables, lo que significa que una vez que se crea una cadena, no se puede modificar. 
+
+		Sin embargo, puedes realizar muchas operaciones.
+
+
+		1. Concatenación:
+
+			```java
+
+			String primerNombre = "John";
+			String apellido = "Doe";
+			String nombreCompleto = primerNombre + " " + apellido;  // Concatenación
+
+			```
+
+		2. Longitud:
+
+			```java
+
+			String mensaje = "¡Hola, mundo!";
+			int longitud = mensaje.length();  // Devuelve la longitud de la cadena
+
+			```
+
+		3. Comparación:
+
+			```java
+
+			String cadena1 = "Java";
+			String cadena2 = "java";
+			boolean sonIguales = cadena1.equals(cadena2);  // Comparación sensible a mayúsculas y minúsculas
+
+			```
+
+
+	Métodos más comunes: 
+
+		length(): 
+
+			Devuelve la longitud de la cadena.
+
+
+		charAt(int index): 
+
+			Devuelve el carácter en la posición especificada.
+
+
+		concat(String str):
+
+			Concatena la cadena especificada al final de esta cadena.
+
+
+		equals(Object obj): 
+
+			Compara esta cadena con el objeto dado.
+
+
+		equalsIgnoreCase(String anotherString): 
+
+			Compara esta cadena con otra cadena, sin distinguir mayúsculas y minúsculas.
+
+
+		indexOf(String str):
+
+			Devuelve la posición de la primera ocurrencia de la cadena especificada.
+
+
+		substring(int beginIndex):
+
+			Devuelve una subcadena que comienza con el carácter en la posición especificada.
+
+
+		toUpperCase(): 
+
+			Convierte toda la cadena a mayúsculas.
+
+
+		toLowerCase(): 
+
+			Convierte toda la cadena a minúsculas.
+
+
+		trim(): 
+
+			Elimina los espacios en blanco iniciales y finales de la cadena.
+
+
+		```java
+
+		String mensaje = "¡Hola, Java!";
+		int longitud = mensaje.length();  // Longitud
+		char primerCaracter = mensaje.charAt(0);  // Primer carácter
+		String subcadena = mensaje.substring(5);  // Subcadena desde la posición 5 en adelante
+
+		System.out.println("Longitud: " + longitud);
+		System.out.println("Primer Carácter: " + primerCaracter);
+		System.out.println("Subcadena: " + subcadena);
+
+		```
 
 
 
+|| Char
+
+	Es un tipo de dato primitivo que se utiliza para representar caracteres Unicode de 16 bits.
+
+	Cada variable de tipo char almacena un solo carácter y se declara usando la palabra clave char. 
+
+	Los caracteres en Java se pueden representar mediante un valor literal entre comillas simples, como 'a', '1', o '$'.
+
+	```java
+
+	char miCaracter = 'A';
+
+	```
+
+
+	Caracteres Especiales:
+
+		Además de los caracteres alfanuméricos comunes, Java permite el uso de caracteres especiales precedidos por una barra invertida (\).	
+
+		\n: Salto de línea.
+    	
+    	\t: Tabulación.
+    	
+    	\': Comilla simple.
+    	
+    	\": Comilla doble.
+    	
+    	\\: Barra invertida.
+
+
+    Operaciones: 
+
+    	1. Comparación: 
+
+    		```java
+
+    		char letra1 = 'a';
+			char letra2 = 'b';
+
+			boolean sonIguales = (letra1 == letra2);  // Comparación de caracteres
+
+    		```
+
+
+    	2. Conversión: 
+
+    		Convertir un 'char' a su valor numérico (código Unicode) y viceversa.
+
+    		```java
+
+    		char miCaracter = 'A';
+			int valorNumerico = (int) miCaracter;  // Convierte char a int
+			char nuevoCaracter = (char) (valorNumerico + 1);  // Convierte int a char
+
+    		```
+
+
+    ```java
+
+    char letra = 'Z';
+	int codigoUnicode = letra;  // El valor Unicode de 'Z'
+
+	System.out.println("Letra: " + letra);
+	System.out.println("Código Unicode: " + codigoUnicode);
+
+    ```
+   
 
 
 || Wrapper Classes
 
+	
+	Wrapper (envolorio): 
+
+		Se refiere a las clases que encapsulan tipos de datos primitivos en objetos. 
+
+		Estos envoltorios proporcionan una interfaz para interactuar con tipos de datos primitivos de manera similar a como se interactúa con objetos.
+
+		Estas clases permiten tratar los tipos de datos primitivos como objetos, ya que a veces es necesario trabajar con objetos en lugar de primitivos, por ejemplo, al utilizar colecciones o al interactuar con bibliotecas que requieren objetos.
+
+
+	Integer: 
+
+		Envuelve el tipo de dato primitivo 'int'.
+	
+	Long: 
+
+		Envuelve el tipo de dato primitivo 'long'.
+	
+	Short: 
+
+		Envuelve el tipo de dato primitivo 'short'.
+	
+	Byte: 
+
+		Envuelve el tipo de dato primitivo 'byte'.
+	
+	Float: 
+
+		Envuelve el tipo de dato primitivo 'float'.
+	
+	Double: 
+
+		Envuelve el tipo de dato primitivo 'double'.
+	
+	Character: 
+
+		Envuelve el tipo de dato primitivo 'char'.
+	
+	Boolean: 
+
+		Envuelve el tipo de dato primitivo 'boolean'.	
+
+
+	1. Creación del objeto: 
+
+		```java
+
+		Integer enteroObjeto = new Integer(42);  // A través del constructor
+		Double dobleObjeto = Double.valueOf(3.14);  // A través de un método estático
+
+		```
+
+
+	2. Conversión entre Primitivos y Wrappers:
+
+		Es especialmente útil al trabajar con colecciones y clases que solo aceptan objetos
+
+		```java
+
+		int numeroPrimitivo = enteroObjeto.intValue();  // Convierte Integer a int
+
+		```
+
+
+	3. Autoboxing y Unboxing automático:
+
+		Significa que el lenguaje puede convertir automáticamente entre tipos primitivos y sus wrappers según sea necesario.
+
+		```java
+
+		// Autoboxing (int a Integer)
+		Integer enteroObjeto = 42;
+
+		// Unboxing (Integer a int)
+		int numeroPrimitivo = enteroObjeto;
+
+		```
+
+
+	Ejemplo: 
+
+		```java
+
+		// Autoboxing
+		Integer enteroObjeto = 100;
+
+		// Unboxing
+		int numeroPrimitivo = enteroObjeto;
+
+		// Utilizando métodos de la clase wrapper
+		double resultado = Math.sqrt(enteroObjeto.doubleValue());
+
+		```
+
+		'enteroObjeto' es un 'Integer' que se crea mediante autoboxing. 
+
+		Luego, se realiza un unboxing para convertirlo de nuevo a un int. 
+
+		Además, se utiliza el método 'doubleValue()' proporcionado por la clase Integer para obtener su valor como un double.
+
+
+	Los wrappers son útiles cuando necesitas tratar tipos primitivos como objetos, por ejemplo, al trabajar con colecciones, APIs que requieren objetos en lugar de primitivos, o cuando necesitas realizar operaciones más complejas con tipos primitivos. 
+
+	Sin embargo, en la mayoría de los casos, puedes trabajar directamente con tipos primitivos sin necesidad de usar wrappers.
 
 
 
 || ArrayList
+	
+	Es una clase que implementa la interfaz List y proporciona una implementación dinámica de arrays. 
 
+	Esto significa que puedes almacenar y manipular un conjunto de elementos de manera flexible, y el tamaño del ArrayList puede cambiar dinámicamente durante la ejecución del programa.
+	
+
+	Tamaño Dinámico:
+
+	    A diferencia de los arrays estáticos, un ArrayList puede cambiar de tamaño durante la ejecución del programa.
+
+	Elementos Ordenados:
+
+	    Están ordenados según el orden en el que se agregaron.
+
+	Acceso Rápido:
+
+	    Puedes acceder rápidamente a cualquier elemento en un ArrayList utilizando su índice.
+
+	Manipulación Sencilla:
+
+	    Proporciona métodos convenientes para agregar, eliminar, buscar y modificar elementos.
+
+
+	1. Importamos la clase: 
+
+		Para utilizar ArrayList, primero necesitas importar la clase. 
+
+	```java
+
+	import java.util.ArrayList;
+
+	```
+
+
+	2. Crear instacia y agregar elementos: 
+
+	```java
+
+	import java.util.ArrayList;
+
+	public class EjemploArrayList {
+	    public static void main(String[] args) {
+	        // Crear un ArrayList de cadenas
+	        ArrayList<String> listaDeNombres = new ArrayList<>();
+
+	        // Agregar elementos
+	        listaDeNombres.add("Alice");
+	        listaDeNombres.add("Bob");
+	        listaDeNombres.add("Charlie");
+
+	        // Acceder a elementos por índice
+	        String segundoNombre = listaDeNombres.get(1);
+	        System.out.println("Segundo Nombre: " + segundoNombre);
+
+	        // Modificar un elemento
+	        listaDeNombres.set(0, "Alicia");
+
+	        // Imprimir todos los elementos
+	        System.out.println("Lista de Nombres:");
+	        for (String nombre : listaDeNombres) {
+	            System.out.println(nombre);
+	        }
+
+	        // Obtener el tamaño del ArrayList
+	        int tamaño = listaDeNombres.size();
+	        System.out.println("Tamaño de la Lista: " + tamaño);
+
+	        // Verificar si la lista contiene un elemento
+	        boolean contieneBob = listaDeNombres.contains("Bob");
+	        System.out.println("¿Contiene a Bob? " + contieneBob);
+
+	        // Eliminar un elemento por índice
+	        listaDeNombres.remove(1);
+
+	        // Imprimir la lista después de la eliminación
+	        System.out.println("Lista después de la eliminación:");
+	        for (String nombre : listaDeNombres) {
+	            System.out.println(nombre);
+	        }
+	    }
+	}
+
+	```
+
+
+	Métodos para ArrayList: 
+
+		add(E elemento): 
+
+			Agrega un elemento al final de la lista.
+
+		
+		get(int índice): 
+
+			Obtiene el elemento en la posición especificada.
+		
+
+		set(int índice, E elemento):
+
+			Reemplaza el elemento en la posición especificada con el nuevo elemento.
+		
+
+		remove(int índice): 
+
+			Elimina el elemento en la posición especificada.
+		
+
+		size(): 
+
+			Devuelve el número de elementos en la lista.
+		
+
+		contains(Object objeto):
+
+			Devuelve true si la lista contiene el objeto especificado.
+		
+
+		isEmpty():
+			
+			Devuelve true si la lista está vacía.
+
+
+	Uso con datos primitivos. 
+
+		Para almacenar tipos de datos primitivos como int, char, etc., necesitas utilizar las clases envoltorio (Integer, Character, etc.) junto con ArrayList.
+
+		```java
+
+		ArrayList<Integer> numeros = new ArrayList<>();
+		
+		```
+
+
+	Almacenar Elementos de Diferentes Tipos:
+
+    	Si necesitas almacenar elementos de diferentes tipos, ya que ArrayList puede contener elementos de cualquier tipo (aunque es más comúnmente usado para almacenar elementos de un solo tipo).
+
+    	```java
+
+    	ArrayList<Object> elementosMixtos = new ArrayList<>();
+		elementosMixtos.add("Hola");
+		elementosMixtos.add(42);
+
+    	```
+
+
+    Uso con Java Collections: 
+
+    	Si necesitas las funcionalidades de la interfaz 'List' y Java Collections para enar, buscar, iterar y etc. 
+
+    	```java
+
+    	Collections.sort(listaDeNombres);
+    	
+    	```
 
 
 
 || 2D ArrayList
 
+	Se trata de lograr un array bidimensional (datos en filas y columnas) usando 'ArrayList'. 
+
+	Se conoce como una "lista de listas" y puede ser utilizada para representar una matriz bidimensional o una tabla.
+
+	```java
+
+	import java.util.ArrayList;
+
+	public class Ejemplo2DArrayList {
+	    public static void main(String[] args) {
+	        // Declaración de un ArrayList bidimensional de enteros
+	        ArrayList<ArrayList<Integer>> matrizBidimensional = new ArrayList<>();
+
+	        // Inicialización de la matriz bidimensional
+	        for (int i = 0; i < 3; i++) {
+	            matrizBidimensional.add(new ArrayList<>());
+	        }
+
+	        // Agregar elementos a la matriz bidimensional
+	        matrizBidimensional.get(0).add(1);
+	        matrizBidimensional.get(0).add(2);
+	        matrizBidimensional.get(0).add(3);
+
+	        matrizBidimensional.get(1).add(4);
+	        matrizBidimensional.get(1).add(5);
+	        matrizBidimensional.get(1).add(6);
+
+	        matrizBidimensional.get(2).add(7);
+	        matrizBidimensional.get(2).add(8);
+	        matrizBidimensional.get(2).add(9);
+
+	        // Imprimir la matriz bidimensional
+	        for (ArrayList<Integer> fila : matrizBidimensional) {
+	            for (int elemento : fila) {
+	                System.out.print(elemento + " ");
+	            }
+	            System.out.println();
+	        }
+	    }
+	}
+
+	```
+
+
+	Acceder a los elementos: 
+
+		Utilizando índices dobles. 
+
+
+		```java
+
+		int elemento = matrizBidimensional.get(1).get(2);
+		System.out.println("Elemento en la fila 1, columna 2: " + elemento);
+		
+		```
+
+
+	Ventajas: 
+
+		Tamaño Dinámico:
+
+	        Puedes cambiar dinámicamente el tamaño de cada fila y columna según sea necesario.
+
+
+	    Facilidad de Manipulación:
+	        
+	        Facilita la manipulación de datos bidimensionales sin preocuparte por los tamaños fijos.
+
+
+	    Tipos de Datos Flexibles:
+	        
+	        Puedes usar diferentes tipos de datos en cada fila si es necesario.
+
+
+	Desventajas: 
+
+		Consumo de Memoria:
+
+    		Puede consumir más memoria que una matriz bidimensional estática si las listas internas tienen tamaños variables.
+
+
+		Acceso Menos Eficiente:
+
+			El acceso a elementos puede ser menos eficiente que en una matriz bidimensional tradicional
+
+
 
 || For each
+	
+	Conocido como bucle mejorado, es una forma simplificada de iterar sobre elementos en una colección o en un array.
 
+	Es útil cuando necesitas recorrer todos los elementos de una colección sin preocuparte por los índices o la longitud.
+
+	```java
+
+	for (Tipo elemento : colección) {
+	    // Cuerpo del bucle
+	}
+
+	```
+
+	Tipo:  
+
+		es el tipo de datos de los elementos en la colección.
+
+    elemento: 
+
+    	es la variable que toma el valor de cada elemento en cada iteración.
+
+    colección: 
+
+    	es la colección o array sobre la cual estás iterando.
+
+
+    Ejemplo: 
+
+    	```java
+
+    	int[] numeros = {1, 2, 3, 4, 5};
+
+		for (int numero : numeros) {
+		    System.out.println(numero);
+		}
+
+    	```
+
+    	"for-each" itera sobre el array 'numeros', asignando cada elemento a la variable 'numero' y luego imprimiendo ese número.
+
+
+
+    Ejemplo con ArrayList: 
+
+    ```java
+
+    import java.util.ArrayList;
+
+	public class EjemploForEach {
+	    public static void main(String[] args) {
+	        ArrayList<String> nombres = new ArrayList<>();
+	        nombres.add("Alice");
+	        nombres.add("Bob");
+	        nombres.add("Charlie");
+
+	        for (String nombre : nombres) {
+	            System.out.println(nombre);
+	        }
+	    }
+	}
+
+    ```
+
+    itera sobre la colección nombres, asignando cada elemento a la variable nombre y luego imprimiendo ese nombre.
+
+
+    Uso con Colecciones:
+
+    	Puede ser utilizado con cualquier objeto iterable, como arrays, listas, conjuntos, mapas, etc.
+
+
+    Limitaciones: 
+
+        No se puede modificar la colección durante la iteración. 
+
+        Intentar hacerlo lanzará una excepción 'ConcurrentModificationException'.
+
+       	```java
+
+       	// Esto lanzará ConcurrentModificationException
+		for (String nombre : nombres) {
+		    if (nombre.equals("Bob")) {
+		        nombres.remove(nombre);
+		    }
+		}
+
+       	```
+
+
+    Es útil en situaciones donde solo necesitas acceder a los elementos y no necesitas realizar operaciones que modifiquen la estructura de la colección.
 
 
 || Métodos
