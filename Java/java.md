@@ -4083,8 +4083,258 @@
     Es útil en situaciones donde solo necesitas acceder a los elementos y no necesitas realizar operaciones que modifiquen la estructura de la colección.
 
 
-|| Métodos
 
+
+|| Métodos
+	
+	Los métodos pertenecen a una clase y deben ser invocados a través de una instancia de la clase o, en el caso de métodos estáticos, directamente desde la clase. 
+
+	Llamar o invocar a una clase en sí misma (como si fuera un método) no tiene sentido en el contexto de Java y resultará en un error de compilación.	
+
+
+	```java
+
+	public class MiClase {
+	    public void miMetodo() {
+	        System.out.println("¡Hola desde miMetodo!");
+	    }
+
+	    public static void main(String[] args) {
+	        // Creación de una instancia de la clase
+	        MiClase instancia = new MiClase();
+
+	        // Llamada al método desde la instancia
+	        instancia.miMetodo();
+
+	        // Intento incorrecto de llamar a la clase (lo siguiente causará un error de compilación)
+	        // MiClase.miClase();  // Esto no es válido en Java
+	    }
+	}
+
+	```
+
+	'miMetodo' es un método de instancia, lo que significa que debe ser llamado a través de una instancia de la clase 'MiClase'. 
+
+	En el método 'main', se crea una instancia de la clase y se llama al método 'miMetodo' en esa instancia.
+
+
+	El intento de llamar directamente a la clase (MiClase.miClase()) resultará en un error de compilación porque 'miClase' no es un método definido en la clase.
+
+	La llamada a un método estático debería ser algo como 'MiClase.metodoEstatico()'.
+
+	Si estás intentando acceder a un método estático, asegúrate de usar el nombre correcto del método y de tener la sintaxis adecuada para llamar a un método estático. 
+
+	La forma correcta sería 'MiClase.metodoEstatico()'.	
+
+
+|| Método de instancia: 
+
+	Cuando creas una clase en Java y luego creas objetos (instancias) de esa clase, puedes llamar a los métodos definidos en esa clase desde esas instancias. 
+
+	Estos métodos pueden acceder a los datos específicos de esa instancia (también conocidos como campos o variables de instancia) utilizando la palabra clave 'this' que hace referencia al objeto o instancia actual de la clase.
+
+
+	Usos: 
+
+		1. No pueden acceder directamente a variables estáticas: 
+
+			A diferencia de los métodos estáticos, los métodos de instancia no pueden acceder directamente a variables estáticas (variables de clase). 
+
+			Sin embargo, pueden acceder a ellas a través del nombre de la clase.
+
+
+		2. Pueden ser sobrescritos:
+
+			Los métodos de instancia pueden ser sobrescritos en las subclases si están marcados como 'public' o 'protected' en la clase base.
+
+			Esto permite que las subclases proporcionen una implementación específica para ese método.
+
+
+	Ejemplo: 
+
+	```java
+
+	public class Persona {
+	    private String nombre;
+	    private int edad;
+
+	    // Constructor
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    // Método de instancia para imprimir información de la persona
+	    public void imprimirInformacion() {
+	        System.out.println("Nombre: " + this.nombre);
+	        System.out.println("Edad: " + this.edad);
+	    }
+
+	    // Método de instancia para incrementar la edad
+	    public void cumplirAnios() {
+	        this.edad++;
+	    }
+
+	    public static void main(String[] args) {
+	        // Crear una instancia de Persona
+	        Persona persona1 = new Persona("Juan", 30);
+
+	        // Llamar a métodos de instancia desde la instancia persona1
+	        persona1.imprimirInformacion(); // Imprime Nombre: Juan, Edad: 30
+	        persona1.cumplirAnios();
+	        persona1.imprimirInformacion(); // Imprime Nombre: Juan, Edad: 31
+	    }
+	}
+
+	```
+
+ 	'imprimirInformacion()' y 'cumplirAnios()'' son métodos de instancia de la clase 'Persona'.
+
+ 	Pueden ser llamados directamente desde una instancia específica de Persona, como 'persona1'. 
+
+ 	Estos métodos acceden a los campos 'nombre' y 'edad' utilizando la palabra clave 'this', que hace referencia a la instancia actual de la clase Persona.
+
+ 	Los métodos de instancia pueden acceder y modificar los datos de esas instancias.
+
+
+
+|| Método estático: 
+
+	Es un método asociado a la clase en lugar de a instancias específicas de esa clase. 
+
+	Esto significa que puedes llamar a un método estático directamente desde la clase, sin necesidad de crear un objeto de esa clase primero
+
+
+	Usos: 
+
+		1. Se usan para operaciones que no dependen del estado del objeto: 
+
+			Los métodos estáticos son útiles para operaciones que no dependen del estado de una instancia específica de la clase.
+
+			Por ejemplo, métodos utilitarios, métodos de fábrica, métodos de inicialización estática, etc.
+
+
+		2. No pueden ser sobrescritos: 
+
+			A diferencia de los métodos de instancia, los métodos estáticos no pueden ser sobrescritos en las subclases. 
+
+			Sin embargo, pueden ser ocultos si se define un método con el mismo nombre en una subclase.
+
+
+	Ejemplo: 
+
+		Se utiliza el nombre de la clase, seguido por un punto y el nombre del método estático. 
+
+	```java
+
+	public class EjemploMetodoEstatico {
+	    private static int contador = 0;
+
+	    public static void main(String[] args) {
+	        // Llamada a un método estático sin instancia
+	        int resultado = suma(5, 3);
+	        System.out.println("Resultado de la suma: " + resultado);
+
+	        // Acceso a una variable estática
+	        System.out.println("Contador: " + contador);
+	    }
+
+	    // Definición de un método estático
+	    public static int suma(int a, int b) {
+	        return a + b;
+	    }
+	}
+
+	```
+
+	'suma' es estático, lo que significa que se puede llamar directamente desde la clase 'EjemploMetodoEstatico' sin necesidad de crear un objeto de esa clase. 
+
+	Además, la variable 'contador' es estática, lo que significa que es compartida entre todas las instancias de la clase y también se puede acceder directamente desde la clase.
+
+
+
+|| This
+
+	Instancia actual de una clase. 
+
+	Se utiliza principalmente en dos contextos:
+
+	1. Referencia a variables de instancia: 
+
+		'this' se utiliza dentro de un método o constructor para hacer referencia a las variables de instancia de la clase actual. 
+
+		Esto es útil cuando el nombre de un parámetro o variable local en un método coincide con el nombre de una variable de instancia.
+
+	```java
+
+	public class Persona {
+	    private String nombre;
+
+	    // Constructor
+	    public Persona(String nombre) {
+	        // Usando 'this' para distinguir entre el parámetro 'nombre' y la variable de instancia 'nombre'
+	        this.nombre = nombre;
+	    }
+
+	    // Método para imprimir el nombre de la persona
+	    public void imprimirNombre() {
+	        // Usando 'this' para hacer referencia a la variable de instancia 'nombre'
+	        System.out.println("Nombre: " + this.nombre);
+	    }
+
+	    public static void main(String[] args) {
+	        // Crear una instancia de Persona y llamar al método imprimirNombre
+	        Persona persona = new Persona("Juan");
+	        persona.imprimirNombre(); // Imprime "Nombre: Juan"
+	    }
+	}
+
+	```
+
+	'this.nombre' hace referencia a la variable de instancia 'nombre' de la clase 'Persona', mientras que 'nombre' en el constructor hace referencia al parámetro del mismo nombre
+
+
+	2. Llamada a constructores: 
+
+		'this' se puede utilizar para llamar a otro constructor de la misma clase dentro de un constructor. 
+
+		Esta llamada a constructor se realiza en la primera línea del constructor y solo puede ser la primera instrucción en el constructor.
+
+	```java
+
+	public class Empleado {
+	    private String nombre;
+	    private int edad;
+
+	    // Constructor que llama a otro constructor de la misma clase
+	    public Empleado(String nombre) {
+	        this(nombre, 0); // Llamar al otro constructor de la clase
+	    }
+
+	    // Constructor principal
+	    public Empleado(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    // Método para imprimir información del empleado
+	    public void imprimirInformacion() {
+	        System.out.println("Nombre: " + this.nombre);
+	        System.out.println("Edad: " + this.edad);
+	    }
+
+	    public static void main(String[] args) {
+	        // Crear una instancia de Empleado y llamar al método imprimirInformacion
+	        Empleado empleado = new Empleado("Ana");
+	        empleado.imprimirInformacion();
+	    }
+	}
+
+	```
+
+	El constructor 'Empleado(String nombre)' llama al otro constructor de la misma clase utilizando 'this(nombre, 0)'.
+
+	Esto permite la reutilización de código y evita la duplicación de inicialización de variables.
 
 
 
