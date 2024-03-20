@@ -4340,24 +4340,560 @@
 
 || Métodos sobrecargados
 
+	Es la capacidad de definir varios métodos en la misma clase con el mismo nombre pero con diferentes listas de parámetros. 
+
+	La sobrecarga de métodos permite a una clase tener múltiples versiones de un método con la misma firma (nombre del método), pero con diferentes tipos o cantidades de parámetros. 
+
+	Características: 
+
+	1. Mismo Nombre:
+        
+        Los métodos sobrecargados tienen el mismo nombre.
+
+    2. Diferentes Parámetros:
+
+        Deben tener listas de parámetros diferentes, lo que puede incluir un número diferente de parámetros, tipos de parámetros diferentes o ambos.
+
+    3. Diferentes Tipos de Retorno:
+      
+        El tipo de retorno no es considerado al determinar si dos métodos son sobrecargados.
 
 
+    ```java
+
+    public class Calculadora {
+	    // Método para sumar dos enteros
+	    public int sumar(int a, int b) {
+	        return a + b;
+	    }
+
+	    // Método sobrecargado para sumar tres enteros
+	    public int sumar(int a, int b, int c) {
+	        return a + b + c;
+	    }
+
+	    // Método sobrecargado para sumar dos números de punto flotante
+	    public double sumar(double a, double b) {
+	        return a + b;
+	    }
+
+	    public static void main(String[] args) {
+	        Calculadora calculadora = new Calculadora();
+
+	        // Llamadas a los métodos sobrecargados
+	        int resultado1 = calculadora.sumar(3, 4);
+	        int resultado2 = calculadora.sumar(1, 2, 3);
+	        double resultado3 = calculadora.sumar(2.5, 3.5);
+
+	        System.out.println("Resultado 1: " + resultado1);
+	        System.out.println("Resultado 2: " + resultado2);
+	        System.out.println("Resultado 3: " + resultado3);
+	    }
+	}
+
+
+    ```
+
+
+    Reglas para los métodos sobrecargados: 
+
+   	1. Número Diferente de Parámetros:
+
+        Puedes sobrecargar un método cambiando el número de parámetros.
+
+    2. Tipos Diferentes de Parámetros:
+        
+        Puedes sobrecargar un método cambiando los tipos de parámetros.
+
+    3. Orden de los Parámetros no es Suficiente:
+
+        Cambiar el orden de los parámetros sin cambiar su tipo no es suficiente para considerar que un método está sobrecargado.
+
+
+    ```java
+
+    // Esto no es una sobrecarga
+	public void metodo(int a, double b) {}
+
+	// Esto tampoco es una sobrecarga
+	public void metodo(double a, int b) {}
+
+    ```
+
+	
 
 || Printf
+	
+	Es un método de la clase PrintStream (también utilizado en la clase System.out) que permite formatear y mostrar texto en la consola. 
 
+	Este método sigue el estilo de formato del lenguaje de programación C.
+
+	```java
+	
+	System.out.printf(formato, argumento1, argumento2, ...);
+
+	```
+
+	formato: 
+
+		Una cadena que especifica el formato de salida.
+
+    argumento1, argumento2, ...: 
+
+    	Los valores que se insertarán en el formato.
+
+	```java
+
+	public class EjemploPrintf {
+	    public static void main(String[] args) {
+	        String nombre = "Juan";
+	        int edad = 25;
+	        double salario = 50000.75;
+
+	        // Formateo de texto con printf
+	        System.out.printf("Hola, %s. Tienes %d años y tu salario es %.2f\n", nombre, edad, salario);
+	    }
+	}
+
+	```    
+
+	'%s', '%d', y '%.2f' son especificadores de formato que se corresponden con el tipo de dato de los argumentos (String, int, y double, respectivamente). 
+
+	Al usar '%s', se espera que el argumento sea una cadena. 
+
+	'%d' espera un entero, y '%.2f' espera un número de punto flotante con dos decimales.
+
+
+	Especificaciones de formato: 
+
+	    %s: Formatea una cadena de caracteres.
+
+	    %d: Formatea un número entero.
+
+	    %f: Formatea un número de punto flotante.
+
+	    %.2f: Formatea un número de punto flotante con dos decimales.
+
+	    %c: Formatea un carácter.
+
+	    %b: Formatea un valor booleano
+
+
+	Escape de Caracteres: 
+
+		caracteres de escape especiales:
+
+    	\n: Nueva línea.
+    	
+    	\t: Tabulación.
+    	
+    	\\: Barra invertida.
+
+
+    	```java
+
+    	System.out.printf("Primera línea\nSegunda línea\n");
+		System.out.printf("Nombre\tEdad\tSalario\n");
+		System.out.printf("C:\\Directorio\\Archivo.txt");
+
+    	```
 
 
 
 || Final
 
+	Indica que una entidad, como una variable, método o clase, no puede ser modificada después de su declaración o definición. 
+
+	Su significado y aplicación pueden variar dependiendo del contexto en el que se utiliza.
+
+
+	1. Variables: 
+
+		Cuando se aplica a una variable, 'final' indica que una vez que se le asigna un valor, ese valor no puede ser cambiado. 
+
+		La variable debe ser inicializada y solo se le puede asignar un valor una vez.
+
+		```java
+
+		final int edad = 30;
+		// Intentar reasignar causará un error de compilación
+		// edad = 31;
+
+		```
+
+
+	2. Métodos: 
+
+		Cuando se aplica a un método, 'final' indica que el método no puede ser sobrescrito por las subclases.	
+		
+		```java
+
+		class ClasePadre {
+		    // Método final que no puede ser sobrescrito
+		    final void metodoFinal() {
+		        // Código del método
+		    }
+		}
+
+		class ClaseHija extends ClasePadre {
+		    // Intentar sobrescribir causará un error de compilación
+		    // @Override
+		    // void metodoFinal() { /* ... */ }
+		}
+
+		```	
+
+
+	3. Clase: 
+
+		'final' indica que la clase no puede ser extendida, es decir, no puede tener subclases.
+
+		```java
+
+		final class ClaseFinal {
+		    // Código de la clase
+		}
+
+		// Intentar extender una clase final causará un error de compilación
+		// class ClaseHija extends ClaseFinal { /* ... */ }
+
+		```
+
+
+	Características: 
+
+	Inmutabilidad:
+
+	    En el caso de variables, final se utiliza para crear variables inmutables, lo que significa que su valor no puede cambiar después de la inicialización.
+
+
+	Evitar Cambios Accidentales:
+
+	    Al marcar un método como final, se evita que las clases hijas lo sobrescriban, lo que puede ser útil cuando queremos asegurarnos de que un método en una clase base no sea modificado por clases derivadas.
+
+
+	Seguridad y Optimización:
+
+	    final puede ayudar al compilador y al intérprete de Java a realizar optimizaciones y puede mejorar la seguridad del código al prevenir ciertos tipos de modificaciones no deseadas.
+
+
+	Claridad en el Código:
+
+	    Al utilizar final, puedes expresar tu intención de que una variable, método o clase no debe cambiar, lo que mejora la claridad y la comprensión del código.
+
+
+	Si bien final proporciona inmutabilidad para variables, métodos y clases, no significa que los objetos a los que apuntan las variables final sean inmutables. 
+
+	Puedes tener una variable final que apunte a un objeto mutable, pero la variable en sí no puede ser reasignada.
+
 
 
 || Objetos 
+
+	Se refiere a instancias de clases. 
+
+	Java es un lenguaje de programación orientado a objetos, lo que significa que todo en Java es un objeto (excepto los tipos primitivos). 
+
+	Un objeto es una instancia única de una clase que tiene atributos y métodos asociados.
+
+
+	1. Clases y objetos: 
+
+		Clases: 
+
+			Es una plantilla para crear objetos. 
+
+			Define la estructura y el comportamiento que compartirán los objetos de esa clase. 
+
+			Se definen con la palabra clave 'class'. 
+
+		```java
+
+		public class Persona {
+		    // Atributos
+		    String nombre;
+		    int edad;
+
+		    // Métodos
+		    void saludar() {
+		        System.out.println("Hola, soy " + nombre + " y tengo " + edad + " años.");
+		    }
+		}
+
+		```
+
+
+		Objetos: 
+
+			Es una instancia particular de una clase.
+
+			Se crea a partir de la plantilla proporcionada por la clase y tiene su propia existencia en la memoria.
+
+
+		```java
+
+		// Creación de un objeto de la clase Persona
+		Persona persona1 = new Persona();
+		persona1.nombre = "Juan";
+		persona1.edad = 30;
+
+		// Llamada al método de la clase
+		persona1.saludar();
+
+		```
+
+
+	2. Características de los Objetos:
+
+    	Atributos: 
+
+    		Representan las propiedades o características del objeto. 
+
+    		En el ejemplo anterior, 'nombre' y 'edad' son atributos de la clase Persona.
+
+
+    	Métodos: 
+
+    		Representan el comportamiento del objeto. 
+
+    		El método 'saludar()' es un método de la clase Persona.
+
+
+   	3. Instanciación de Objetos:
+
+    	La palabra clave 'new' se utiliza para crear una instancia (un objeto) de una clase. 
+
+    	La memoria se asigna para el objeto, y el constructor de la clase se llama para inicializar el objeto.
+
+    	```java
+
+    	Persona persona1 = new Persona();
+
+    	```
+
+
+	4. Referencias a Objetos:
+
+    	Las variables que almacenan objetos no almacenan realmente el objeto en sí, sino una referencia al objeto en la memoria.    
+
+    	```java
+
+    	Persona persona1 = new Persona();
+		Persona persona2 = persona1; // Ambas variables apuntan al mismo objeto
+
+    	```
+
+
+    5. Encapsulamiento: 
+
+
+    	Las clases pueden utilizar el concepto de encapsulamiento para ocultar ciertos detalles internos y exponer solo lo necesario a través de métodos públicos.
+
+    	```java
+
+    	public class CuentaBancaria {
+		    private double saldo; // Atributo privado
+
+		    public void depositar(double cantidad) {
+		        // Lógica para depositar
+		        saldo += cantidad;
+		    }
+
+		    public double obtenerSaldo() {
+		        return saldo;
+		    }
+		}
+
+    	```
+
+
+    6. Herencia y Polimorfismo:
+
+    	Herencia. 
+
+    		Una clase puede heredar atributos y métodos de otra clase.
+
+    	```java
+
+    	// Herencia
+		public class Empleado extends Persona {
+		    // Nuevos atributos y métodos específicos para Empleado
+		}
+
+    	``` 
+
+
+    	Polimorfismo: 
+
+    		Un objeto puede ser tratado como un objeto de su clase base.
+
+    		Es la capacidad de un objeto de tomar muchas formas.
+
+    	```java
+
+    	// Clase base
+		class Animal {
+		    void hacerSonido() {
+		        System.out.println("Haciendo un sonido genérico");
+		    }
+		}
+
+		// Clases derivadas
+		class Perro extends Animal {
+		    @Override
+		    void hacerSonido() {
+		        System.out.println("El perro ladra");
+		    }
+		}
+
+		class Gato extends Animal {
+		    @Override
+		    void hacerSonido() {
+		        System.out.println("El gato maulla");
+		    }
+		}
+
+		public class EjemploPolimorfismo {
+		    public static void main(String[] args) {
+		        // Creación de objetos
+		        Animal miAnimal1 = new Perro();
+		        Animal miAnimal2 = new Gato();
+
+		        // Llamadas a los métodos
+		        miAnimal1.hacerSonido();  // Salida esperada: El perro ladra
+		        miAnimal2.hacerSonido();  // Salida esperada: El gato maulla
+		    }
+		}
+
+    	```
+
+    	'Animal' es la clase base que tiene un método llamado 'hacerSonido'. 
+
+    	Luego, hay dos clases derivadas, 'Perro' y 'Gato', que sobrescriben el método 'hacerSonido' para proporcionar implementaciones específicas para cada tipo de animal.
+
+		En el método 'main', creamos dos objetos de tipo 'Animal', pero asignamos instancias de las clases derivadas 'Perro' y 'Gato' a esas variables. 
+
+		Esto se llama "polimorfismo de ejecución". 
+
+		Cuando llamamos al método 'hacerSonido' en estos objetos, se ejecuta la versión específica del método según el tipo real del objeto en tiempo de ejecución.
+
+
+    7. Recolector de Basura: 
+
+    	Java cuenta con un recolector de basura (Garbage Collector) que se encarga de liberar la memoria utilizada por los objetos que ya no son referenciados.
+
+
+   	8. Equals y HashCode:
+
+    	Los métodos 'equals()' y 'hashCode()' se utilizan para comparar la igualdad de objetos y son parte de la implementación de la clase Object, la clase base para todas las clases en Java.
 
 
 
 || Constructor 
 
+	Es un método especial utilizado para inicializar objetos de una clase. 
+
+	Su nombre debe ser idéntico al nombre de la clase y no tiene tipo de retorno, ni siquiera void. 
+
+	Los constructores se llaman automáticamente cuando se crea una instancia (objeto) de la clase.
+
+
+	1. Sintaxis: 
+
+		```java
+
+		public class MiClase {
+		    // Constructor por defecto (sin parámetros)
+		    public MiClase() {
+		        // Código de inicialización
+		    }
+
+		    // Constructor con parámetros
+		    public MiClase(int parametro1, String parametro2) {
+		        // Código de inicialización con parámetros
+		    }
+		}
+
+
+		```
+
+
+	2. Constructor por Defecto:
+
+    	Si no defines ningún constructor en tu clase, Java proporciona un constructor por defecto automáticamente.
+
+    	Este constructor no toma ningún parámetro y simplemente inicializa los valores predeterminados.
+
+
+	3. Constructor con Parámetros:
+
+    	Puedes definir constructores que acepten parámetros para inicializar los atributos de la clase según los valores proporcionados durante la creación del objeto.
+
+
+	4. Llamada al Constructor de la Clase Base:
+
+    	En una jerarquía de clases, el constructor de una clase puede llamar al constructor de su clase base usando 'super()'.
+
+    	```java
+
+    	public class ClaseBase {
+		    public ClaseBase(int valor) {
+		        // Código de inicialización para la clase base
+		    }
+		}
+
+		public class ClaseDerivada extends ClaseBase {
+		    public ClaseDerivada(int valor) {
+		        super(valor); // Llamada al constructor de la clase base
+		        // Código de inicialización para la clase derivada
+		    }
+		}
+
+    	```
+
+
+    5. Uso de Constructores:
+
+	    Los constructores se utilizan para asignar valores iniciales a los atributos de un objeto y realizar otras operaciones de inicialización necesarias. 
+
+	    Son esenciales para garantizar que un objeto sea válido y coherente en su estado inicial.
+
+
+	6. Sobrecarga de Constructores:
+
+	    Puedes tener múltiples constructores en una clase mediante la técnica de sobrecarga de métodos, donde cada constructor tiene una lista de parámetros diferente.
+
+	    ```java
+
+	    public class Persona {
+		    private String nombre;
+		    private int edad;
+
+		    // Constructor por defecto
+		    public Persona() {
+		        // Inicialización predeterminada
+		    }
+
+		    // Constructor con parámetros
+		    public Persona(String nombre, int edad) {
+		        this.nombre = nombre;
+		        this.edad = edad;
+		    }
+		}
+
+	    ```
+
+
+	7. Construcción de objetos. 
+
+		Se usa el operador 'new' seguido por la llamada al constructor de la clase.
+
+		```java
+
+		Persona persona1 = new Persona(); // Constructor por defecto
+		Persona persona2 = new Persona("Juan", 25); // Constructor con parámetros
+
+		```
 
 
 
