@@ -4337,6 +4337,70 @@
 	Esto permite la reutilización de código y evita la duplicación de inicialización de variables.
 
 
+	3. Referencia a los Atributos del Objeto Actual en Métodos:
+
+	```java
+
+	public class Circulo {
+	    private double radio;
+
+	    public void setRadio(double radio) {
+	        if (radio > 0) {
+	            this.radio = radio;
+	        } else {
+	            System.out.println("Radio inválido");
+	        }
+	    }
+	}
+
+	```
+
+	'this.radio' se refiere al atributo 'radio' del objeto actual en el método 'setRadio'.
+
+
+	4. Retorno del Objeto Actual desde Métodos.
+
+		Llama al metodo después de la creación de objetos (instancias).
+
+
+	```java
+
+	public class Empleado {
+	    private String nombre;
+
+	    public Empleado withNombre(String nombre) {
+	        this.nombre = nombre;
+	        return this;
+	    }
+	}
+
+	```
+
+
+	5. This a través de un método estático: 
+
+		Referencia a la clase actual en métodos estático.
+
+	```java
+
+	public class MiClase {
+	    private static int contador = 0;
+
+	    public static int obtenerContador() {
+	        return contador;
+	    }
+
+	    public void incrementarContador() {
+	        contador++;
+	    }
+	}
+
+	```
+
+
+	this se utiliza para referenciar al objeto actual (instancia creada) en el que se está trabajando y se emplea en situaciones donde es necesario distinguir entre los atributos de la clase y los parámetros del método, así como en la llamada a otros constructores de la misma clase.
+
+
 
 || Métodos sobrecargados
 
@@ -4894,6 +4958,152 @@
 		Persona persona2 = new Persona("Juan", 25); // Constructor con parámetros
 
 		```
+
+
+	Ejemplos de uso: 
+
+	1. Inicializar de Atributos: 
+
+		Asignar valores iniciales a los atributos de un objeto.
+
+		Esto garantiza que el objeto tenga un estado coherente desde el principio.
+
+	```java
+
+	public class Persona {
+	    String nombre;
+	    int edad;
+
+	    // Constructor con parámetros para inicializar atributos
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+	}
+
+	// Uso del constructor
+	Persona persona = new Persona("Juan", 25);
+
+	```
+
+
+	2. Asignación de Valores Predeterminados: 
+
+		Un constructor puede establecer valores predeterminados para los atributos si no se proporcionan al crear el objeto.
+
+
+	```java
+
+	public class Coche {
+	    String modelo;
+	    int año;
+
+	    // Constructor con valores predeterminados
+	    public Coche() {
+	        this.modelo = "Desconocido";
+	        this.año = 0;
+	    }
+	}
+
+	// Uso del constructor
+	Coche miCoche = new Coche(); // Se asignan valores predeterminados
+
+	```
+
+
+	3. Acciones adicionales:	
+
+		Los constructores también se utilizan para realizar operaciones de inicialización adicionales necesarias para que el objeto esté en un estado válido.
+
+	```java
+
+	public class ConectorBD {
+	    // Constructor que abre la conexión a la base de datos
+	    public ConectorBD() {
+	        // Código para abrir la conexión
+	    }
+	}
+
+	// Uso del constructor
+	ConectorBD bd = new ConectorBD(); // Se abre la conexión automáticamente
+
+	```
+
+
+	4. Herencia:	 
+
+		Los constructores se utilizan para inicializar tanto la parte de la clase base como la de las clases derivadas.	
+
+	```java
+
+	public class Vehiculo {
+	    int velocidad;
+
+	    public Vehiculo(int velocidad) {
+	        this.velocidad = velocidad;
+	    }
+	}
+
+	public class Coche extends Vehiculo {
+	    String modelo;
+
+	    public Coche(int velocidad, String modelo) {
+	        super(velocidad); // Llamada al constructor de la clase base
+	        this.modelo = modelo;
+	    }
+	}
+
+	```	
+
+
+	5. Sobrecarga de Constructores:
+
+   		Puedes tener múltiples constructores en una clase mediante la sobrecarga, lo que significa tener diferentes versiones del constructor con diferentes parámetros.
+
+	```java
+
+	public class Libro {
+	    String titulo;
+	    String autor;
+
+	    // Constructor por defecto
+	    public Libro() {
+	        // Código de inicialización por defecto
+	    }
+
+	    // Constructor con parámetros
+	    public Libro(String titulo, String autor) {
+	        this.titulo = titulo;
+	        this.autor = autor;
+	    }
+	}
+
+	```
+
+
+	6. This, llamada al constructor (sobrecargado o por defecto):
+
+		Asigna valores. 
+
+	```java
+
+	public class Persona {
+	    private String nombre;
+	    private int edad;
+
+	    // Constructor principal
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    // Constructor por defecto que llama al constructor principal
+	    public Persona() {
+	        this("Desconocido", 0);
+	    }
+	}
+
+	```
 
 
 
