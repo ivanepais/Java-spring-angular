@@ -5109,12 +5109,531 @@
 
 || Ámbito de variable
 
+	Se refiere a la región del programa donde la variable es válida y accesible. 
 
+	Determina en qué partes del código una variable puede ser utilizada y cuándo se destruye.
+
+
+	Se puede clasificar en tres categorías principales:
+
+	1. Alcance de Bloque (Block Scope):
+
+	    Una variable declarada dentro de un bloque de código delimitado por llaves {} tiene un alcance de bloque.
+
+	    La variable es válida solo dentro de ese bloque y no es accesible fuera de él.
+
+
+	    ```java
+
+	    public class AlcanceDeBloque {
+		    public static void main(String[] args) {
+		        // Alcance de bloque
+		        int x = 10;
+		        {
+		            int y = 20;
+		            System.out.println(x); // Válido: x está en el alcance
+		            System.out.println(y); // Válido: y está en el alcance
+		        }
+		        System.out.println(x); // Válido: x sigue en el alcance
+		        // System.out.println(y); // Inválido: y está fuera de alcance
+		    }
+		}
+
+	    ```
+
+
+	2. Alcance de Método (Method Scope):
+
+    	Una variable declarada dentro de un método tiene un alcance de método.
+
+    	Es válida solo dentro del cuerpo del método y no es accesible fuera de ese método
+
+    	```java
+
+    	public class AlcanceDeMetodo {
+		    public static void main(String[] args) {
+		        // Alcance de método
+		        int x = 10;
+		        System.out.println(x); // Válido: x está en el alcance
+		        muestraMensaje();
+		        // System.out.println(y); // Inválido: y está fuera de alcance
+		    }
+
+		    static void muestraMensaje() {
+		        int y = 20;
+		        System.out.println(y); // Válido: y está en el alcance del método
+		    }
+		}
+
+    	```
+
+
+	3. Alcance de Clase (Class Scope):
+
+   		Las variables de instancia (miembros de la clase) tienen un alcance de clase.
+
+    	Son accesibles en cualquier parte de la clase.
+
+    	```java
+
+    	public class AlcanceDeClase {
+		    // Alcance de clase
+		    int x = 10;
+
+		    public static void main(String[] args) {
+		        AlcanceDeClase objeto = new AlcanceDeClase();
+		        System.out.println(objeto.x); // Válido: x es un miembro de la clase
+		    }
+		}
+
+    	```
+
+    El alcance de una variable también se aplica a los parámetros de un método. 
+
+    Además, cuando se declara una variable local con el mismo nombre que una variable de instancia en una clase, el alcance de la variable local tiene prioridad dentro de ese bloque de código.
+
+    Manejar adecuadamente el alcance de las variables es esencial para evitar errores y escribir código más limpio y mantenible.
+
+
+    Buenas prácticas:  
+
+
+		Mantén el Alcance Tan Reducido Como Sea Posible:
+
+		    Limita el alcance de las variables tanto como sea posible. 
+
+		    Esto mejora la legibilidad y mantenibilidad del código, ya que reduce la cantidad de variables que deben ser rastreadas en diferentes partes del programa.
+
+
+		Evita el Alcance Excesivo de las Variables de Clase:
+
+		    Evita declarar variables de instancia como públicas o protegidas a menos que sea necesario.
+
+		    Opta por encapsular las variables y proporcionar métodos de acceso (getters y setters) según sea necesario.
+
+
+		Preferir Variables Locales:
+
+		    Dale preferencia a las variables locales sobre las variables de instancia siempre que sea posible. 
+
+		    Las variables locales son más eficientes y están más cerca de donde se utilizan.
+
+
+		Evita Variables Globales Innecesarias:
+
+		    Minimiza el uso de variables globales. 
+
+		    Las variables globales pueden hacer que el código sea más difícil de entender y depurar. 
+
+		    Se prefieren las variables locales o parámetros de método siempre que sean suficientes para el propósito.
+
+
+		Utiliza Variables Finales (final) Cuando Sea Apropiado:
+
+		    Marca las variables que no deben cambiar de valor como final. 
+
+		    Esto ayuda a prevenir errores y proporciona información adicional a los lectores del código sobre la intención del programador 
+
+		    ```java
+
+		    final int CONSTANTE = 42;
+
+		    ```
+
+
+		Evitar Nombres de Variables Redundantes:
+
+		    Utiliza nombres de variables descriptivos pero evita redundancias.
+
+		    Por ejemplo, si tienes un método que recibe un parámetro llamado numero, no es necesario nombrar la variable local como numeroLocal.
+
+
+		Evitar Nombres de Variables Muy Cortos o Crípticos:
+
+		    Aunque es importante mantener los nombres de variables concisos, evita nombres que sean demasiado cortos o crípticos. 
+
+		    Utiliza nombres que indiquen claramente el propósito o contenido de la variable.
+
+
+		Manejar Excepciones de Alcance:
+
+		    Maneja adecuadamente las excepciones de alcance, como la sombra de variables (shadowing), que ocurre cuando una variable local tiene el mismo nombre que una variable de instancia. 
+
+		    Si es necesario, utiliza this para hacer referencia explícita a la variable de instancia.
+
+		    ```java
+
+		    public class EjemploShadows {
+			    private int x = 5;
+
+			    public void muestraEjemplo(int x) {
+			        this.x = x; // Usando 'this' para referirse a la variable de instancia
+			    }
+			}
+
+		    ```
+
+
+
+|| Variables de instancia: 
+
+	Son variables que se declaran dentro de una clase pero fuera de cualquier método, constructor o bloque. 
+
+	Pertenecen a la instancia de la clase y tienen un alcance que está vinculado a la instancia específica del objeto. 
+
+	Tiene un alcance que se extiende a lo largo de toda la clase.
+
+	Puede ser accedida y modificada por cualquier método de la misma clase utilizando la referencia a la instancia del objeto.
+
+	Cada instancia (objeto) de la clase tiene su propia copia de las variables de instancia, y los valores de estas variables pueden variar de una instancia a otra.
+
+	Existe durante toda la vida de la instancia del objeto a la que está asociada. 
+
+	Se crea cuando se instancia el objeto y se destruye cuando el objeto es elegible para la recolección de basura.
+
+	Para declarar una variable de instancia, se utiliza el modificador de acceso seguido del tipo de datos y el nombre de la variable.
+
+	```java
+
+	public class EjemploVariablesDeInstancia {
+	    // Variable de instancia
+	    private int numero;
+
+	    // Otro ejemplo de variable de instancia
+	    private String nombre;
+
+	    // Constructor que inicializa las variables de instancia
+	    public EjemploVariablesDeInstancia(int numero, String nombre) {
+	        this.numero = numero;
+	        this.nombre = nombre;
+	    }
+
+	    // Método que accede a las variables de instancia
+	    public void mostrarInformacion() {
+	        System.out.println("Número: " + numero);
+	        System.out.println("Nombre: " + nombre);
+	    }
+
+	    public static void main(String[] args) {
+	        // Crear instancias de la clase y acceder a las variables de instancia
+	        EjemploVariablesDeInstancia objeto1 = new EjemploVariablesDeInstancia(42, "Objeto 1");
+	        EjemploVariablesDeInstancia objeto2 = new EjemploVariablesDeInstancia(99, "Objeto 2");
+
+	        // Mostrar información de cada objeto
+	        objeto1.mostrarInformacion();
+	        objeto2.mostrarInformacion();
+	    }
+	}
+
+	```
+
+
+
+|| Variables locales y de instancia
+
+		
+	Alcance (Scope):
+        
+        Variable Local: 
+
+        	Tiene un alcance limitado a la parte del código en la que se declara (un método, un bloque, etc.). No es accesible fuera de ese ámbito.
+
+
+        Variable de Instancia: 
+
+        	Tiene un alcance que se extiende a lo largo de toda la clase. 
+
+        	Puede ser accedida y modificada por cualquier método de la misma clase y está vinculada a una instancia específica del objeto.
+
+
+    Duración:
+
+        Variable Local: 
+
+        	Existe solo durante la ejecución del bloque de código en el que se declara. 
+
+        	Cuando el bloque de código termina, la variable local se destruye y su espacio en memoria se libera.
+
+
+        Variable de Instancia: 
+
+        	Existe durante toda la vida de la instancia del objeto a la que está asociada. 
+
+        	Se crea cuando se instancia el objeto y se destruye cuando el objeto es elegible para la recolección de basura.
+
+
+    Asociación con la Instancia:
+
+        Variable Local: 
+
+        	No está vinculada a ninguna instancia específica de la clase.
+
+        	Su existencia y valor son locales al método o bloque en el que se declara.
+
+
+        Variable de Instancia: 
+
+        	Está asociada a una instancia específica de la clase. 
+
+        	Cada instancia del objeto tiene su propia copia de las variables de instancia.
+
+
+    Acceso y Modificación:
+        
+        Variable Local: 
+
+        	Solo es accesible y modificable dentro del método o bloque en el que se declara.
+
+
+        Variable de Instancia: 	
+
+        	Puede ser accedida y modificada por cualquier método de la misma clase utilizando la referencia a la instancia del objeto.
+
+
+    Encapsulamiento:
+
+    	Las variables locales están más alineadas con el principio de encapsulamiento.
+
+    	Al limitar el alcance de una variable a un método o bloque de código específico, se reduce la visibilidad y accesibilidad desde otros métodos o partes del código, lo que favorece la encapsulación y la modularidad.
+
+
+	Prevención de Modificaciones Accidentales:
+
+	    Las variables locales, al tener un alcance más limitado, son menos propensas a ser modificadas accidentalmente desde otros métodos o partes del código.
+
+	    Esto ayuda a prevenir errores sutiles que pueden ocurrir cuando múltiples métodos intentan modificar el estado de una variable de instancia.
+
+
+	Evita Efectos Secundarios Indeseados:
+
+   		El uso extensivo de variables de instancia puede llevar a efectos secundarios indeseados. 
+
+   		Si varios métodos modifican variables de instancia en un objeto compartido, puede ser difícil rastrear el origen de los cambios y comprender el estado del objeto en un momento dado.
+
+
+	```java
+
+	public class EjemploVariables {
+	    // Variable de instancia
+	    private int variableDeInstancia;
+
+	    public void ejemploMetodo(int parametro) {
+	        // Variable local
+	        int variableLocal = parametro;
+
+	        // Uso de variables
+	        variableLocal = variableLocal + 10;
+	        variableDeInstancia = variableDeInstancia + 5;
+	    }
+	}
+
+	```
+
+
+
+|| Estado de un objeto: 
+
+	Son valores de sus campos (también conocidos como atributos o propiedades) en un momento dado. 
+
+	Cada objeto en Java tiene un conjunto de campos que representan sus características y propiedades. 
+
+	El estado de un objeto se determina por los valores actuales de estos campos en un momento específico durante la ejecución del programa.
+
+
+	Características del Estado de un Objeto:
+
+    1. Representación de Datos: 
+
+    	Los campos de un objeto representan los datos asociados con ese objeto.
+
+    	Estos campos pueden ser de diferentes tipos, como primitivos, objetos u otros tipos de datos.
+
+
+    2. Cambios Dinámicos: 
+
+    	El estado de un objeto puede cambiar durante la ejecución del programa a medida que se realizan operaciones en él.
+
+    	Los métodos pueden modificar los valores de los campos, lo que altera el estado del objeto.
+
+
+    3. Encapsulamiento: 
+
+    	El estado de un objeto está encapsulado dentro de él, lo que significa que solo los métodos de la propia clase (o clases relacionadas) pueden acceder y modificar sus campos directamente. 
+
+    	Esto promueve la ocultación de información y el principio de encapsulamiento en la programación orientada a objetos.
+
+
+    Ejemplo: 
+
+    	Una clase 'Persona' que representa a una persona con campos como nombre, edad y género. 
+
+    ```java
+
+    public class Persona {
+	    // Campos (estado)
+	    private String nombre;
+	    private int edad;
+	    private char genero;
+
+	    // Constructor
+	    public Persona(String nombre, int edad, char genero) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	        this.genero = genero;
+	    }
+
+	    // Métodos para acceder y modificar el estado
+	    public String getNombre() {
+	        return nombre;
+	    }
+
+	    public void setNombre(String nombre) {
+	        this.nombre = nombre;
+	    }
+
+	    public int getEdad() {
+	        return edad;
+	    }
+
+	    public void setEdad(int edad) {
+	        this.edad = edad;
+	    }
+
+	    public char getGenero() {
+	        return genero;
+	    }
+
+	    public void setGenero(char genero) {
+	        this.genero = genero;
+	    }
+	}
+
+    ```
+
+    La clase Persona tiene tres campos: nombre, edad y genero. 
+
+    El estado de un objeto Persona se define por los valores actuales de estos campos. 
+
+    Por ejemplo, si creamos una instancia de Persona con el nombre "Juan", edad 25 y género 'M', ese sería el estado inicial de ese objeto.
+
+    ```java
+
+    Persona persona = new Persona("Juan", 25, 'M');
+
+    ```
+
+    El estado de este objeto puede cambiar más tarde, por ejemplo, si llamamos a métodos para actualizar el nombre o la edad de la persona.
+
+    ```java
+
+    persona.setEdad(26);
+	persona.setNombre("Juan Pérez");
+
+    ```
+
+
+|| Constructores sobrecargados
+	
+	Capacidad de una clase de tener múltiples constructores con la misma o diferente cantidad de parámetros. 
+
+	Estos constructores comparten el mismo nombre pero difieren en la firma, es decir, en la cantidad, tipo o orden de los parámetros que aceptan.
+
+	Cuando se crea una instancia de una clase utilizando un constructor, la JVM (Java Virtual Machine) determina cuál constructor utilizar según la cantidad y tipo de argumentos proporcionados. 
+
+	Esto permite a la clase proporcionar diferentes maneras de inicializar sus objetos.
+
+	```java
+
+	public class Persona {
+	    private String nombre;
+	    private int edad;
+
+	    // Constructor por defecto
+	    public Persona() {
+	        nombre = "Sin nombre";
+	        edad = 0;
+	    }
+
+	    // Constructor con un parámetro
+	    public Persona(String nombre) {
+	        this.nombre = nombre;
+	        edad = 0; // Edad por defecto
+	    }
+
+	    // Constructor con dos parámetros
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    // Otros métodos de la clase...
+	    
+	    // Método para mostrar información de la persona
+	    public void mostrarInformacion() {
+	        System.out.println("Nombre: " + nombre);
+	        System.out.println("Edad: " + edad);
+	    }
+
+	    public static void main(String[] args) {
+	        // Crear instancias utilizando diferentes constructores
+	        Persona persona1 = new Persona();
+	        Persona persona2 = new Persona("Alice");
+	        Persona persona3 = new Persona("Bob", 30);
+
+	        // Mostrar información de las personas
+	        persona1.mostrarInformacion();
+	        persona2.mostrarInformacion();
+	        persona3.mostrarInformacion();
+	    }
+	}
+
+	```
 
 
 
 || toString
+	
+	Es un método de la clase 'Object' que se puede sobrescribir en cualquier clase para proporcionar una representación de cadena de texto de un objeto. 
 
+	Cuando imprimes un objeto utilizando el método 'System.out.println' o al concatenar el objeto con una cadena, Java invoca implícitamente el método toString del objeto para obtener una representación de cadena legible.
+
+	Al sobrescribir el método toString en una clase específica, puedes proporcionar tu propia lógica para generar una representación más significativa y descriptiva del objeto.
+
+	```java
+
+	public class Persona {
+	    private String nombre;
+	    private int edad;
+
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    // Sobrescribir el método toString
+	    @Override
+	    public String toString() {
+	        return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
+	    }
+
+	    public static void main(String[] args) {
+	        Persona persona = new Persona("Alice", 25);
+
+	        // Al imprimir el objeto, se invoca implícitamente el método toString
+	        System.out.println(persona); // Salida: Persona [nombre=Alice, edad=25]
+	    }
+	}
+
+	```
+
+	La clase 'Persona' sobrescribe el método toString para proporcionar una representación más significativa que incluye el nombre y la edad de la persona. 
+
+	Cuando imprimes una instancia de Persona, se llama automáticamente al método 'toString', y la salida es más descriptiva.
+
+
+	Sobrescribir el método 'toString' es útil al depurar o al imprimir información sobre objetos, y puede hacer que tu código sea más legible y fácil de entender. 
+
+	Es una práctica común en Java proporcionar una implementación personalizada de 'toString' en clases específicas.
 
 
 
@@ -5122,5 +5641,60 @@
 
 
 
-||
+|| Objetos como argumentos
+
+
+
+|| Static
+
+
+|| Herencia 
+
+
+
+|| Métodos sobreescritos
+
+
+
+|| Super
+
+
+|| Abstracción
+
+
+|| Modificadores de Acceso
+
+
+|| Encapsulación
+
+
+|| Copia de Objetos
+
+
+
+|| Interface 
+
+
+
+|| Polimorfismo 
+
+
+
+|| Polimorfismo dinamico
+
+
+
+|| Manejo de excepciones
+
+
+
+|| Buenas prácticas para Objetos
+
+
+
+|| File class
+
+
+
+
 
