@@ -5639,33 +5639,832 @@
 
 || Array de Objetos
 
+	Es un arreglo que contiene elementos que son objetos en lugar de tipos de datos primitivos. 
+
+	Cada elemento en el arreglo es una referencia a un objeto, y esos objetos pueden ser instancias de cualquier clase.
+
+	```java
+
+	// Declaración de un array de objetos
+	NombreDeClase[] nombreArreglo = new NombreDeClase[tamaño];
+
+	```
+
+	Ejemplo: 
+
+
+	```java
+
+	public class EjemploArrayOfObjects {
+	    public static void main(String[] args) {
+	        // Declarar un array de objetos de la clase Persona
+	        Persona[] personas = new Persona[3];
+
+	        // Crear instancias de Persona y asignarlas al array
+	        personas[0] = new Persona("Alice", 25);
+	        personas[1] = new Persona("Bob", 30);
+	        personas[2] = new Persona("Charlie", 22);
+
+	        // Acceder a los objetos del array y mostrar información
+	        for (Persona persona : personas) {
+	            System.out.println(persona);
+	        }
+	    }
+	}
+
+	class Persona {
+	    private String nombre;
+	    private int edad;
+
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
+	    }
+	}
+
+	```
+	
+	El array 'personas' que puede contener instancias de la clase 'Persona'. 
+
+	Se crean instancias de 'Persona' y se asignan a las posiciones del arreglo. 
+
+	Luego, se utiliza un bucle 'for-each' para recorrer el arreglo y mostrar información sobre cada persona.
+
+	Un arreglo almacena referencias a objetos, no los objetos en sí.
+
+	Por lo tanto, al declarar un "array of objects", se están almacenando referencias a las instancias de las clases en lugar de los objetos directamente. 
+
+	Esto implica que es necesario crear instancias de los objetos y asignarlas al arreglo antes de utilizarlo.
+
+
+
+|| Referencias
+
+	Son variables que almacenan direcciones de memoria, específicamente direcciones de objetos en el 'heap'. 
+
+	Aunque en Java no puedes manipular directamente direcciones de memoria como lo harías en lenguajes de bajo nivel, las referencias te permiten acceder y manipular objetos de forma indirecta.
+
+	1. Declaracion de Referencias:
+
+		Se declaran con el tipo de objeto al que apuntarán, seguido del nombre de la variable. 
+
+		```java
+
+		// Declaración de referencia a un objeto de tipo String
+		String miString;
+
+		```
+
+	2. Asignación de Referencias: 
+
+		Las referencias se pueden asignar a objetos existentes utilizando el operador de asignación (=).
+
+		```java
+
+		// Asignación de referencia a un nuevo objeto String
+		miString = new String("Hola, mundo");
+
+		```
+
+
+	3. Operaciones con Referencias: 
+
+		Como pasarlas como argumentos a métodos, retornarlas desde métodos o asignarles nuevos valores.
+
+		```java
+
+		String otroString = miString;  // Asignación de una referencia a otra
+
+		```
+
+
+	4. Referencias y Objetos:
+
+		La referencia apunta al objeto en el heap, pero no es el objeto en sí. 
+
+		Varias referencias pueden apuntar al mismo objeto.
+
+		```java
+
+		String referencia1 = new String("Java");
+		String referencia2 = referencia1;  // Ambas referencias apuntan al mismo objeto
+
+		```
+
+
+	5. Null: 	
+
+		Una referencia puede tener el valor especial null, que indica que no apunta a ningún objeto.
+
+
+	6. Operaciones de Dereferenciación:
+
+    	Para acceder a los métodos y campos de un objeto, se utiliza la dereferenciación a través de la referencia.
+
+    	```java
+
+    	int longitud = miString.length();  // Dereferenciación para acceder al método 'length'
+
+    	```
+
+
+    7. Garbage Collection:
+
+    	El recolector de basura liberar la memoria de objetos no utilizados. 
+
+    	Cuando no hay referencias que apunten a un objeto, se convierte en candidato para ser recolectado.
+
+    	```java
+
+    	miString = null;  // La referencia a 'miString' ahora es null, el objeto puede ser recolectado
+
+    	```
+
+
+    8. Referencias a Objetos Anónimos:
+
+    	Puedes crear referencias a objetos de manera anónima, especialmente al trabajar con interfaces o clases abstractas.
+
+    
+    9. Referencias a Objetos Genéricos:
+
+    	Las referencias a objetos pueden ser utilizadas con tipos genéricos para hacer que el código sea más flexible y reutilizable
+
+    	```java
+
+    	List<String> lista = new ArrayList<>();
+
+    	```
+
 
 
 || Objetos como argumentos
+	
+	De métodos o como valores de retorno desde métodos. 
+
+	En Java, cuando pasas un objeto a un método, estás pasando la referencia al objeto, no el objeto en sí. 
+
+	Esto significa que, dentro del método, puedes manipular el objeto referenciado, y cualquier cambio que realices afectará al objeto original fuera del método.
+
+	```java
+
+	public class ObjectPassingExample {
+	    public static void main(String[] args) {
+	        // Crear un objeto Persona
+	        Persona persona = new Persona("Alice", 25);
+
+	        // Llamar a un método y pasar el objeto como argumento
+	        modificarPersona(persona);
+
+	        // Imprimir la información después de llamar al método
+	        System.out.println("Después de llamar al método:");
+	        System.out.println(persona);
+	    }
+
+	    // Método que modifica el objeto Persona
+	    public static void modificarPersona(Persona p) {
+	        p.setEdad(30);
+	        p.setNombre("Nuevo Nombre");
+	    }
+	}
+
+	class Persona {
+	    private String nombre;
+	    private int edad;
+
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    public void setNombre(String nombre) {
+	        this.nombre = nombre;
+	    }
+
+	    public void setEdad(int edad) {
+	        this.edad = edad;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
+	    }
+	}
+
+	```
+
+	Se crea un objeto 'Persona' llamado 'persona'. 
+
+	Luego, se llama al método 'modificarPersona' y se le pasa el objeto 'persona' como argumento. 
+
+	Dentro del método, se modifica la 'edad' y el 'nombre' de la persona.
+
+	Después de llamar al método, se imprime la información de la persona y se observa que los cambios realizados dentro del método han afectado al objeto original.
+
+
+	Estás pasando la referencia al objeto, no puedes cambiar la referencia en sí misma. 
+
+	Es decir, no puedes hacer que la referencia apunte a un objeto completamente diferente dentro del método. 
+
+	La referencia es pasada por valor, pero aún así te permite modificar el estado del objeto al que apunta.
 
 
 
 || Static
 
+	'static' se utiliza para declarar miembros de clase que pertenecen a la propia clase en lugar de a las instancias individuales de esa clase.
+
+
+	Contextos: 
+
+	1. Métodos Estáticos:
+
+    	Un método estático pertenece a la clase en lugar de a instancias específicas de esa clase. 
+
+    	Se llama a través del nombre de la clase en lugar de a través de una instancia del objeto. 
+
+    	Los métodos estáticos no pueden acceder a variables de instancia directamente y generalmente se utilizan para operaciones que no dependen del estado específico de un objeto.
+
+    	```java
+
+    	public class EjemploStaticMethod {
+		    public static void metodoEstatico() {
+		        System.out.println("Este es un método estático.");
+		    }
+
+		    public static void main(String[] args) {
+		        // Llamada a un método estático
+		        EjemploStaticMethod.metodoEstatico();
+		    }
+		}
+
+    	```
+
+
+    2. Variables Estáticas (Campos Estáticos):
+
+    	Una variable estática es compartida por todas las instancias de una clase.
+
+    	Existe una única copia de la variable, independientemente de cuántas instancias de la clase se hayan creado. 
+
+    	Se accede a las variables estáticas a través del nombre de la clase, no a través de instancias individuales.
+
+    	```java
+
+    	public class EjemploStaticVariable {
+		    // Variable estática
+		    public static int contador = 0;
+
+		    public static void main(String[] args) {
+		        // Acceder y modificar una variable estática
+		        EjemploStaticVariable.contador++;
+		        System.out.println("Valor del contador: " + EjemploStaticVariable.contador);
+		    }
+		}
+
+    	```
+
+
+    3. Bloques de Inicialización Estáticos:
+
+    	Los bloques de inicialización estáticos son bloques de código que se ejecutan una vez cuando la clase se carga en la memoria. 
+
+    	Se utilizan para inicializar variables estáticas o realizar operaciones de inicialización específicas de la clase.
+
+    	```java
+
+    	public class EjemploStaticBlock {
+		    // Variable estática
+		    public static int valor;
+
+		    // Bloque de inicialización estática
+		    static {
+		        valor = 42;
+		        System.out.println("Inicialización estática completada.");
+		    }
+
+		    public static void main(String[] args) {
+		        // Acceder a la variable estática después de la inicialización
+		        System.out.println("Valor después de la inicialización: " + EjemploStaticBlock.valor);
+		    }
+		}
+
+    	```
+
+
+    4. Clases Anidadas Estáticas:
+
+    	Una clase estática anidada es una clase que se declara dentro de otra clase y se modifica con la palabra clave static. 
+
+    	Puede tener acceso a miembros estáticos de la clase externa.
+
+    	```java
+
+    	public class ClaseExterna {
+		    // Miembro estático de la clase externa
+		    public static int valorExterno = 10;
+
+		    // Clase interna estática
+		    public static class ClaseInterna {
+		        public void mostrarValorExterno() {
+		            // Acceder a un miembro estático de la clase externa
+		            System.out.println("Valor externo desde la clase interna: " + valorExterno);
+		        }
+		    }
+		}
+
+    	```
+
+
 
 || Herencia 
+
+	Permite la creación de nuevas clases basadas en clases existentes. 
+
+	En Java, la herencia se implementa utilizando la palabra clave 'extends'. 
+
+	Una clase que hereda de otra se denomina "subclase" o "clase hija", y la clase de la cual hereda se llama "superclase" o "clase padre". 
+
+	Facilita la reutilización de código y la creación de una jerarquía de clases.
+
+	```java
+
+	// Superclase o clase padre
+	class Animal {
+	    String nombre;
+
+	    public Animal(String nombre) {
+	        this.nombre = nombre;
+	    }
+
+	    public void hacerSonido() {
+	        System.out.println("Haciendo un sonido genérico");
+	    }
+	}
+
+	// Subclase o clase hija que hereda de Animal
+	class Perro extends Animal {
+	    public Perro(String nombre) {
+	        super(nombre);
+	    }
+
+	    // Sobrescribe el método hacerSonido de la superclase
+	    @Override
+	    public void hacerSonido() {
+	        System.out.println("Guau, guau");
+	    }
+
+	    // Nuevo método específico de la clase Perro
+	    public void perseguirCola() {
+	        System.out.println("Persiguiendo la cola");
+	    }
+	}
+
+	public class EjemploHerencia {
+	    public static void main(String[] args) {
+	        // Crear una instancia de la clase Perro
+	        Perro miPerro = new Perro("Buddy");
+
+	        // Acceder a los miembros de la superclase
+	        System.out.println("Nombre del perro: " + miPerro.nombre);
+
+	        // Llamar al método hacerSonido de la subclase
+	        miPerro.hacerSonido();
+
+	        // Llamar al método específico de la clase Perro
+	        miPerro.perseguirCola();
+	    }
+	}
+
+	```
+
+	La clase 'Animal' es la superclase con un constructor y un método 'hacerSonido'.
+
+    La clase 'Perro' es la subclase que hereda de Animal utilizando extends.
+
+    La subclase 'Perro' sobrescribe el método 'hacerSonido' y agrega un nuevo método 'perseguirCola'.
+
+    En el método 'main', se crea una instancia de 'Perro' y se accede tanto a los miembros heredados de 'Animal' como a los específicos de 'Perro'.
 
 
 
 || Métodos sobreescritos
+	
+	Una subclase proporciona una implementación específica de un método que ya está definido en su superclase. 
+
+	Cuando una subclase tiene un método con la misma firma (nombre, tipo de retorno y parámetros) que un método en la superclase, se dice que la subclase está sobrescribiendo el método de la superclase.
+
+
+	1. Firma Idéntica: 
+
+		El método en la subclase debe tener la misma firma que el método en la superclase. Esto incluye el nombre del método, el tipo de retorno y la lista de parámetros.
+
+
+    2. Visibilidad Compatible o Más Permisiva: 
+
+    	La visibilidad del método en la subclase puede ser igual o más permisiva que la visibilidad del método en la superclase. 
+
+    	Por ejemplo, si un método en la superclase es 'protected', en la subclase puede ser 'protected' o 'public', pero no puede ser private.
+
+    
+    3. Valor de Retorno Covariante:
+
+    	El tipo de retorno del método en la subclase puede ser un subtipo del tipo de retorno del método en la superclase.
+
+    	Esto significa que la subclase puede devolver un tipo más específico.
 
 
 
 || Super
+	
+	Se utiliza para referirse a la superclase de la clase actual.
+
+	Puede ser utilizada de varias maneras, y su principal propósito es acceder a los miembros (campos o métodos) de la superclase.
+
+
+	1. Acceder a los Campos de la Superclase:
+
+		Puedes utilizar 'super' para acceder a los campos de la superclase cuando hay un campo en la subclase con el mismo nombre y deseas diferenciarlos.
+
+		```java
+		class Animal {
+		    String nombre = "Animal";
+		}
+
+		class Perro extends Animal {
+		    String nombre = "Perro";
+
+		    void mostrarNombres() {
+		        System.out.println("Nombre en la subclase: " + nombre);
+		        System.out.println("Nombre en la superclase: " + super.nombre);
+		    }
+		}
+
+		public class EjemploSuperKeyword {
+		    public static void main(String[] args) {
+		        Perro miPerro = new Perro();
+		        miPerro.mostrarNombres();
+		    }
+		}
+
+		```
+
+		'super.nombre' se utiliza para acceder al campo 'nombre' de la superclase 'Animal', mientras que nombre se refiere al campo de la subclase 'Perro'.
+
+	
+	2. Invocar Métodos de la Superclase:
+
+		Puedes utilizar 'super' para invocar métodos de la superclase cuando hay una sobrescritura de método en la subclase y deseas ejecutar la versión de la superclase.
+
+		```java
+
+		class Animal {
+		    void hacerSonido() {
+		        System.out.println("Sonido genérico de un animal");
+		    }
+		}
+
+		class Perro extends Animal {
+		    @Override
+		    void hacerSonido() {
+		        super.hacerSonido();  // Invoca el método de la superclase
+		        System.out.println("Guau, guau");
+		    }
+		}
+
+		public class EjemploSuperKeyword {
+		    public static void main(String[] args) {
+		        Perro miPerro = new Perro();
+		        miPerro.hacerSonido();
+		    }
+		}
+
+		```
+
+		'super.hacerSonido()' se utiliza para invocar el método 'hacerSonido' de la superclase 'Animal' desde la subclase 'Perro'.		
+
+
+	3. Llamar al Constructor de la Superclase:
+
+		Puedes utilizar 'super' para llamar al constructor de la superclase desde el constructor de la subclase.
+
+		```java
+
+		class Animal {
+		    String nombre;
+
+		    Animal(String nombre) {
+		        this.nombre = nombre;
+		    }
+		}
+
+		class Perro extends Animal {
+		    String raza;
+
+		    Perro(String nombre, String raza) {
+		        super(nombre);  // Llama al constructor de la superclase
+		        this.raza = raza;
+		    }
+		}
+
+		public class EjemploSuperKeyword {
+		    public static void main(String[] args) {
+		        Perro miPerro = new Perro("Buddy", "Labrador");
+		        System.out.println("Nombre del perro: " + miPerro.nombre);
+		        System.out.println("Raza del perro: " + miPerro.raza);
+		    }
+		}
+
+		```
+
+		'super(nombre)' se utiliza para llamar al constructor de la superclase 'Animal' desde el constructor de la subclase 'Perro' y heredar la característica. 
+
 
 
 || Abstracción
+	
+	Es la capacidad de representar las características esenciales de un objeto sin proporcionar detalles innecesarios o irrelevantes. 
+
+	En otras palabras, la abstracción se trata de centrarse en los aspectos más importantes de un objeto y ocultar los detalles de implementación menos importantes.
+
+
+	Principios: 
+
+	1. Identificar Entidades Relevantes: 
+
+		La abstracción comienza identificando las entidades relevantes en el problema que estás tratando de resolver.
+
+		Estas entidades pueden ser objetos del mundo real o conceptos abstractos.
+
+
+    2. Definir Clases y Objetos: 
+
+    	Una vez identificadas las entidades, las representas en tu programa mediante clases y objetos en Java. 
+
+    	Cada clase encapsula el comportamiento y el estado asociado con una entidad específica.
+
+
+    3. Ocultar Detalles de Implementación: 
+
+    	En la definición de una clase, te enfocas en los detalles esenciales y relevantes para la entidad que estás representando, mientras ocultas los detalles de implementación innecesarios. 
+
+    	Esto se logra mediante la encapsulación, donde los detalles internos de la clase se mantienen privados y solo se exponen los aspectos relevantes a través de métodos públicos.
+
+
+    Ejemplo: 
+
+		Programa para gestionar una biblioteca, debemos tener una clase que represente sus entidades, como una clase 'Libro' que representa a los libros de la biblioteca. 
+
+
+	```java
+
+	public class Libro {
+	    private String titulo;
+	    private String autor;
+	    private int añoPublicacion;
+
+	    // Constructor y métodos getter y setter...
+
+	    public void prestar() {
+	        // Implementación para prestar un libro
+	    }
+
+	    public void devolver() {
+	        // Implementación para devolver un libro
+	    }
+
+	    // Otros métodos relevantes...
+	}
+
+	```
+
+	La clase 'Libro' encapsula el comportamiento y el estado asociado con un libro. 
+
+	Los detalles de implementación, sobre cómo se almacena el título o el autor, se mantienen ocultos dentro de la clase y solo se exponen a través de métodos públicos como 'getTitulo()' y 'getAutor()'. 
+
+	Esto permite que otros objetos interactúen con un libro de manera abstracta, sin necesidad de conocer los detalles internos de cómo se implementa la clase Libro.
+	
 
 
 || Modificadores de Acceso
 
+	Son palabras clave que se utilizan para controlar el nivel de acceso a clases, campos, métodos y constructores en un programa. 
+
+	Estos modificadores determinan qué partes del código pueden acceder a los miembros de una clase y en qué medida.
+
+
+	1. Public: 
+
+		Los miembros declarados como 'public' son accesibles desde cualquier clase. 
+
+		No hay restricciones de acceso.
+
+		```java
+
+		public class MiClase {
+		    public int miCampo;
+		    public void miMetodo() {
+		        // Código del método
+		    }
+		}
+
+		```
+
+
+	2. Private:
+
+    	Los miembros declarados como 'private' son accesibles solo dentro de la misma clase. 
+
+    	No son accesibles desde clases externas.
+
+    	```java
+
+    	public class MiClase {
+		    private int miCampo;
+		    private void miMetodo() {
+		        // Código del método
+		    }
+		}
+
+    	```
+
+
+    3. Protected (protected):
+
+    	Los miembros declarados como 'protected' son accesibles dentro de la misma clase, dentro de las clases del mismo paquete y en las subclases (incluso si están en paquetes diferentes).
+
+    	```java
+
+    	public class MiClase {
+		    protected int miCampo;
+		    protected void miMetodo() {
+		        // Código del método
+		    }
+		}
+
+    	```
+
+
+    4. Default (sin modificador):
+
+    	Si no se especifica ningún modificador de acceso (es decir, no se usa 'public', 'private' o 'protected'), se aplica el acceso predeterminado. 
+
+    	Los miembros con acceso predeterminado son accesibles solo dentro del mismo paquete.
+
+    	```java
+
+    	class MiClase {
+		    int miCampo;  // Acceso predeterminado
+		    void miMetodo() {
+		        // Código del método
+		    }
+		}
+
+    	```
+
+
+    Uso de Modificadores de Acceso:
+
+	    Clases:
+
+	        Las clases pueden ser 'public' o tener acceso predeterminado. 
+
+	        No pueden ser 'private' ni 'protected'.
+
+
+	    Campos (Variables de Instancia o de Clase):
+
+	        Pueden ser 'public', 'private', 'protected' o tener acceso predeterminado.
+
+
+	    Métodos:
+
+	        Pueden ser 'public', 'private', 'protected' o tener acceso predeterminado.
+
+	    
+	    Constructores:
+
+	        Pueden ser 'public', 'private', 'protected' o tener acceso predeterminado.
+
+
+	Contribución: 
+
+		Encapsulamiento:
+
+	        Los modificadores de acceso son esenciales para el principio de encapsulamiento, que sugiere ocultar los detalles internos de implementación y proporcionar una interfaz pública para interactuar con el objeto.
+
+
+	    Seguridad:
+
+	        Los modificadores de acceso también contribuyen a la seguridad y la integridad del código, ya que limitan el acceso a ciertos miembros solo a las partes del código que realmente necesitan utilizarlos.       
+
+
+
 
 || Encapsulación
+		
+	Es la idea de agrupar datos y los métodos que operan sobre esos datos en una única unidad llamada clase. 
+
+	Además, la encapsulación implica ocultar los detalles internos de implementación de una clase y proporcionar una interfaz pública consistente para interactuar con la misma.
+
+	
+	Principios: 
+
+	1. Ocultar Detalles Internos:
+
+        Los detalles internos de implementación, como la representación interna de los datos y la lógica de implementación de los métodos, se ocultan fuera de la clase. 
+
+        Esto se conoce como ocultamiento de información.
+
+
+    2. Proteger Datos:
+
+        Los datos internos de una clase se protegen al proporcionar acceso controlado a través de métodos de la clase. 
+
+        Esto evita que los datos sean modificados de manera inapropiada desde fuera de la clase.
+
+
+    3. Proporcionar Interfaz Pública:
+
+        Se define una interfaz pública consistente que especifica cómo interactuar con la clase. 
+
+        Esta interfaz se compone de métodos públicos y actúa como un contrato entre la clase y el mundo exterior.
+
+
+    4. Facilitar Mantenimiento:
+
+        La encapsulación facilita el mantenimiento del código, ya que los cambios internos en la implementación de una clase no afectarán a las partes del programa que utilizan la clase, siempre y cuando la interfaz pública permanezca inalterada.
+
+
+	```java
+
+	public class Persona {
+	    private String nombre;  // Campo encapsulado
+	    private int edad;       // Campo encapsulado
+
+	    // Constructor
+	    public Persona(String nombre, int edad) {
+	        this.nombre = nombre;
+	        this.edad = edad;
+	    }
+
+	    // Métodos públicos para acceder a los campos encapsulados
+	    public String getNombre() {
+	        return nombre;
+	    }
+
+	    public void setNombre(String nombre) {
+	        this.nombre = nombre;
+	    }
+
+	    public int getEdad() {
+	        return edad;
+	    }
+
+	    public void setEdad(int edad) {
+	        if (edad > 0) {
+	            this.edad = edad;
+	        }
+	    }
+	}
+
+	```
+
+	La clase 'Persona' encapsula los campos 'nombre' y 'edad'. 
+
+	Los métodos 'get' y 'set' proporcionan una interfaz para acceder y modificar estos campos.
+
+	La palabra clave 'private' asegura que los campos solo sean accesibles y modificables desde dentro de la propia clase. 
+
+	Este enfoque permite un control más preciso sobre cómo se accede y se modifica la información interna de la clase.	
+
+	```java
+
+	public class EjemploEncapsulacion {
+	    public static void main(String[] args) {
+	        Persona persona = new Persona("Alice", 25);
+
+	        // Acceder a los campos encapsulados mediante métodos públicos
+	        System.out.println("Nombre: " + persona.getNombre());
+	        System.out.println("Edad: " + persona.getEdad());
+
+	        // Modificar los campos encapsulados mediante métodos públicos
+	        persona.setNombre("Bob");
+	        persona.setEdad(30);
+
+	        System.out.println("Nuevo Nombre: " + persona.getNombre());
+	        System.out.println("Nueva Edad: " + persona.getEdad());
+	    }
+	}
+
+	```
+
+
 
 
 || Copia de Objetos
