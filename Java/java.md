@@ -6466,28 +6466,511 @@
 
 
 
-
 || Copia de Objetos
+	
+	Es la creación de un nuevo objeto que tiene los mismos valores que otro objeto existente. 
+
+	Es importante comprender que en Java, cuando copias un objeto, en realidad estás creando una nueva referencia al mismo objeto o, en el caso de la copia profunda, una nueva instancia con valores idénticos pero independiente del objeto original.
+
+
+	1. Copia Superficial (Shallow Copy):
+
+		Una copia superficial crea un nuevo objeto, pero si el objeto original contiene referencias a otros objetos, la copia solo copia esas referencias, no los objetos a los que apuntan. 
+
+		Ambas referencias (original y copia) apuntarán a los mismos objetos internos.
+
+		```java
+
+		class Persona {
+		    String nombre;
+
+		    Persona(String nombre) {
+		        this.nombre = nombre;
+		    }
+		}
+
+		public class EjemploCopiaSuperficial {
+		    public static void main(String[] args) {
+		        Persona personaOriginal = new Persona("Alice");
+
+		        // Copia superficial
+		        Persona personaCopia = personaOriginal;
+
+		        // Ambas referencias apuntan al mismo objeto
+		        System.out.println("Original: " + personaOriginal.nombre);
+		        System.out.println("Copia: " + personaCopia.nombre);
+
+		        // Modificar el objeto a través de una de las referencias
+		        personaOriginal.nombre = "Bob";
+
+		        // Ambas referencias reflejan el cambio
+		        System.out.println("Original después de modificar: " + personaOriginal.nombre);
+		        System.out.println("Copia después de modificar: " + personaCopia.nombre);
+		    }
+		}
+
+
+		```
+
+
+	2. Copia Profunda (Deep Copy):
+
+		Una copia profunda crea un nuevo objeto y también copia los objetos internos a los que hace referencia, de modo que ambos objetos (original y copia) son independientes y no comparten referencias a los mismos objetos internos.
+
+		```java
+
+		class Persona {
+		    String nombre;
+
+		    Persona(String nombre) {
+		        this.nombre = nombre;
+		    }
+		}
+
+		public class EjemploCopiaProfunda {
+		    public static void main(String[] args) {
+		        Persona personaOriginal = new Persona("Alice");
+
+		        // Copia profunda
+		        Persona personaCopia = new Persona(personaOriginal.nombre);
+
+		        // Ambas referencias apuntan a objetos independientes
+		        System.out.println("Original: " + personaOriginal.nombre);
+		        System.out.println("Copia: " + personaCopia.nombre);
+
+		        // Modificar el objeto a través de una de las referencias
+		        personaOriginal.nombre = "Bob";
+
+		        // Los objetos internos no se ven afectados por el cambio
+		        System.out.println("Original después de modificar: " + personaOriginal.nombre);
+		        System.out.println("Copia después de modificar: " + personaCopia.nombre);
+		    }
+		}
+
+		```
+
+		Si los objetos internos son mutables (por ejemplo, listas o mapas), una copia superficial solo duplicará las referencias a esos objetos mutables, mientras que una copia profunda también duplicará el contenido mutable. 
+
+		En algunos casos, puede ser necesario implementar la lógica de copia profunda manualmente o utilizar bibliotecas externas como 'Object.clone()' o bibliotecas de serialización/deserialización para realizar copias profundas automáticamente.
+
+
+	Casos de uso: 
+
+	1. Inmutabilidad:
+
+    	Si un objeto es inmutable (sus estados no cambian después de la creación), generalmente no necesitas realizar copias, ya que los objetos inmutables son inherentemente seguros para compartir entre múltiples partes de un programa.
+
+
+	2. Evitar Efectos Secundarios:
+
+    	Al realizar copias, puedes evitar efectos secundarios no deseados cuando compartes objetos entre diferentes partes del código. 
+
+    	Una copia crea una instancia independiente, lo que significa que las modificaciones en una instancia no afectarán a la otra.
+
+
+	3. Cambios Locales:
+
+    	Cuando necesitas realizar cambios locales en un objeto sin afectar el objeto original. 
+
+    	Esto es especialmente útil cuando trabajas con colecciones, como listas o mapas, y deseas realizar modificaciones sin afectar la versión original
+
+
+	4. Seguridad:
+
+    	En algunos casos, puede ser necesario utilizar copias para garantizar la seguridad de los datos. 
+
+    	Por ejemplo, cuando pasas objetos a través de interfaces públicas, puedes proporcionar copias para evitar que el código cliente realice modificaciones no autorizadas.
+
+
+    5. Evitar Referencias Compartidas:
+
+    	Algunas estructuras de datos pueden compartir referencias a objetos internos. 
+
+    	En tales casos, realizar una copia asegura que las instancias originales y copiadas no compartan referencias internas
+
+
+    6. Snapshot de Datos:
+
+    	Cuando necesitas tomar un "snapshot" (instantánea) de los datos en un momento específico para trabajar con ellos independientemente de los cambios futuros.
 
 
 
 || Interface 
+	
+	Colección de métodos abstractos (sin implementación) y, a partir de Java 8, puede contener métodos con implementación (conocidos como métodos por defecto o default methods) y constantes (variables que no pueden ser modificadas). 
+
+	Una interfaz define un contrato que las clases pueden implementar, especificando los métodos que deben proporcionar. Las interfaces permiten la creación de código más modular y facilitan la implementación de múltiples herencias
+
+
+	Características: 
+
+	1 .Métodos Abstractos:
+
+    	Una interfaz puede contener métodos abstractos, que son declaraciones de métodos sin implementación.
+
+    	```java
+
+    	interface Forma {
+		    void dibujar();  // Método abstracto
+		}
+
+    	```
+
+
+    2. Métodos por Defecto (Default Methods):
+
+    	A partir de Java 8, las interfaces pueden tener métodos con implementación proporcionando una implementación predeterminada para el método. 
+
+    	Las clases que implementan la interfaz pueden optar por utilizar la implementación predeterminada o proporcionar su propia implementación
+
+    	```java
+
+    	interface Saludable {
+		    default void saludar() {
+		        System.out.println("¡Hola!");
+		    }
+		}
+
+    	```
+
+
+    3. Constantes:
+
+   		Las interfaces pueden contener constantes, que son variables con valores que no pueden ser modificados. 
+
+   		Estas constantes son implícitamente public, static y final.
+
+   		```java
+
+   		interface Colores {
+		    int ROJO = 1;     // Constante
+		    int VERDE = 2;    // Constante
+		    int AZUL = 3;     // Constante
+		}
+
+   		```
+
+
+   	4. Múltiple Herencia:
+
+    	A diferencia de las clases, una clase puede implementar múltiples interfaces. 
+
+    	Esto permite la implementación de múltiple herencia en Java.
+
+    	```java
+
+    	class Circulo implements Forma, Saludable {
+		    @Override
+		    public void dibujar() {
+		        System.out.println("Dibujando un círculo");
+		    }
+		}
+
+    	```
+
+
+    Ejemplo: 
+
+    ```java
+
+    // Definir una interfaz
+		interface Animal {
+		    void hacerSonido();  // Método abstracto
+		}
+
+		// Implementar la interfaz en una clase
+		class Perro implements Animal {
+		    @Override
+		    public void hacerSonido() {
+		        System.out.println("Guau, guau");
+		    }
+		}
+
+		// Otra implementación de la interfaz
+		class Gato implements Animal {
+		    @Override
+		    public void hacerSonido() {
+		        System.out.println("Miau, miau");
+		    }
+		}
+
+		// Ejemplo de uso
+		public class EjemploInterfaz {
+		    public static void main(String[] args) {
+		        Animal perro = new Perro();
+		        perro.hacerSonido();  // Resultado: Guau, guau
+
+		        Animal gato = new Gato();
+		        gato.hacerSonido();   // Resultado: Miau, miau
+		    }
+		}
+
+
+    ```
+
+
+
+|| Contrato: 
+
+	Conjunto de reglas y expectativas que establece cómo se deben utilizar y comportar las clases que implementan una interfaz o heredan de una clase base. 
+
+	Un contrato establece las responsabilidades y garantías que deben cumplir las clases que participan en él.	
+
+	
+	1. Interfaz como contrato: 
+
+		Se establece mediante los métodos declarados en la interfaz. 
+
+		Cada clase que implementa la interfaz está obligada a proporcionar implementaciones concretas para todos los métodos declarados en esa interfaz. 
+
+		Cada método en la interfaz representa una expectativa que se debe cumplir. 
+
+		```java
+
+		interface Forma {
+		    void dibujar();
+		    double calcularArea();
+		}
+
+		```
+
+		Cualquier clase que implemente la interfaz Forma debe proporcionar una implementación para los métodos dibujar y calcularArea. 
+
+		Este conjunto de métodos forma el contrato que las clases deben seguir.
+
+
+	2. Herencia como Contrato:
+
+    	En el caso de la herencia, una clase base define un conjunto de métodos y propiedades que las clases derivadas deben heredar. 
+
+    	La clase base establece un contrato que las clases derivadas deben cumplir, lo que significa que deben proporcionar implementaciones concretas para todos los métodos definidos en la clase base.
+
+    	```java
+
+    	class Animal {
+		    void hacerSonido() {
+		        System.out.println("Sonido genérico de un animal");
+		    }
+		}
+
+		class Perro extends Animal {
+		    // Implementación específica para hacerSonido en la clase Perro
+		    @Override
+		    void hacerSonido() {
+		        System.out.println("Guau, guau");
+		    }
+		}
+
+    	```
+
+    	En este ejemplo, la clase 'Animal' establece un contrato al definir el método 'hacerSonido'. 
+
+    	La clase 'Perro', que hereda de 'Animal', debe proporcionar su propia implementación del método 'hacerSonido' para cumplir con el contrato.
+
+
+    Características: 
+
+    1. Interoperabilidad:
+
+	    El contrato facilita la interoperabilidad entre clases y componentes. 
+
+	    Las clases que cumplen con el mismo contrato pueden interactuar de manera eficiente y predecible, lo que facilita la construcción de sistemas complejos.
+
+
+	2. Extensibilidad:
+
+	    El contrato permite la extensibilidad del código.
+
+	    Puedes introducir nuevas clases que implementen el mismo contrato sin afectar las partes existentes del sistema.
+
+
+	3. Mantenimiento:
+
+	    El contrato facilita el mantenimiento del código. 
+
+	    Si una clase cumple con un contrato, se puede confiar en que cumplirá con las expectativas definidas por ese contrato, incluso si la implementación interna de la clase cambia.
+
 
 
 
 || Polimorfismo 
+	
+	Es la capacidad de un objeto de tomar muchas formas diferentes.
+
+	El polimorfismo permite que un mismo nombre (como un método o una propiedad) se utilice de manera diferente en diferentes contextos. 
+
+	Hay dos tipos principales de polimorfismo en POO: 
+
+	1. Polimorfismo de tiempo de compilación (compile-time polymorphism o polimorfismo estático): 
+
+		También conocido como sobrecarga de métodos o "overloading", este tipo de polimorfismo ocurre en tiempo de compilación. 
+
+		En la sobrecarga de métodos, múltiples métodos en una clase tienen el mismo nombre pero diferentes listas de parámetros. 
+
+		El compilador determina qué método llamar en función de la cantidad y tipos de argumentos proporcionados.
+
+		```java
+
+		public class EjemploPolimorfismoCompileTime {
+		    // Sobrecarga de métodos
+		    static int sumar(int a, int b) {
+		        return a + b;
+		    }
+
+		    static double sumar(double a, double b) {
+		        return a + b;
+		    }
+
+		    public static void main(String[] args) {
+		        System.out.println(sumar(5, 10));       // Llama al primer método
+		        System.out.println(sumar(3.5, 7.2));    // Llama al segundo método
+		    }
+		}
+
+		```
 
 
+	2. Polimorfismo de tiempo de ejecución (runtime polymorphism o polimorfismo dinámico): 
 
-|| Polimorfismo dinamico
+		También conocido como sobrescritura de métodos o "overriding", este tipo de polimorfismo ocurre en tiempo de ejecución. 
+
+		En la sobrescritura de métodos, una clase hija proporciona una implementación específica para un método que ya está definido en su clase base. 
+
+		La elección de qué método llamar se realiza en tiempo de ejecución, basándose en el tipo real del objeto.
+
+		```java
+
+		// Clase base
+		class Animal {
+		    void hacerSonido() {
+		        System.out.println("Sonido genérico de un animal");
+		    }
+		}
+
+		// Clase derivada que sobrescribe el método hacerSonido
+		class Perro extends Animal {
+		    @Override
+		    void hacerSonido() {
+		        System.out.println("Guau, guau");
+		    }
+		}
+
+		public class EjemploPolimorfismoRunTime {
+		    public static void main(String[] args) {
+		        Animal miAnimal = new Perro();  // Crear una instancia de la clase derivada
+
+		        miAnimal.hacerSonido();  // Llama al método sobrescrito en tiempo de ejecución
+		    }
+		}
+
+		```
 
 
 
 || Manejo de excepciones
 
+	Permite a los programadores controlar y responder a situaciones excepcionales o errores que pueden ocurrir durante la ejecución de un programa. 
+
+	Las excepciones son eventos imprevistos que interrumpen el flujo normal de ejecución. 
+
+	Al utilizar el manejo de excepciones, puedes escribir código que detecte, maneje y recupere de manera controlada de estos errores.
+
+	Se manejan mediante el uso de bloques 'try', 'catch', 'finally' y, opcionalmente, la cláusula 'throws' en la firma de los métodos.
+
+
+	1. Bloque try y catch:
+
+		El bloque 'try' se utiliza para contener el código que podría generar una excepción.
+
+		Dentro del bloque 'try', puedes tener uno o varios bloques 'catch' que capturan y manejan excepciones específicas.
+
+	```java
+
+	try {
+	    // Código que podría generar una excepción
+	    // Por ejemplo, división entre cero
+	    int resultado = 10 / 0;
+	} catch (ArithmeticException e) {
+	    // Manejar la excepción específica
+	    System.out.println("Error de división por cero: " + e.getMessage());
+	} catch (Exception e) {
+	    // Manejar excepciones generales
+	    System.out.println("Ocurrió una excepción: " + e.getMessage());
+	} finally {
+	    // Bloque opcional que siempre se ejecutará, ocurra o no una excepción
+	    System.out.println("Este bloque siempre se ejecuta.");
+	}
+
+	```
+
+	Si ocurre una excepción durante la división entre cero, el control se transfiere al bloque 'catch' correspondiente (ArithmeticException). 
+
+	Si no coincide con el tipo de excepción esperado, se intentará con el siguiente bloque 'catch'. 
+
+	El bloque 'finally' se ejecutará siempre, independientemente de si se produjo una excepción o no.
+
+
+	2. Cláusula throws:
+
+		La cláusula 'throws' se utiliza en la firma de un método para indicar que el método puede lanzar ciertos tipos de excepciones. 
+
+		Los métodos que lanzan excepciones deben declarar las excepciones usando throws o manejarlas internamente con bloques try-catch.
+
+	```java
+
+	public void miMetodo() throws MiExcepcion {
+	    // Código que podría lanzar la excepción MiExcepcion
+	    if (condicion) {
+	        throw new MiExcepcion("Ocurrió un error");
+	    }
+	}
+
+	```
+
+	'miMetodo' puede lanzar una excepción de tipo 'MiExcepcion'.
+	
+	Quien llame a este método deberá manejar esta excepción o declararla en su propia firma usando 'throws'	
+
+
+	3. Excepciones Personalizadas
+
+		Puedes crear tus propias excepciones personalizadas extendiendo la clase Exception o alguna de sus subclases. 
+
+		Esto te permite definir excepciones específicas para tu aplicación.
+
+		```java
+
+		class MiExcepcion extends Exception {
+		    public MiExcepcion(String mensaje) {
+		        super(mensaje);
+		    }
+		}
+
+		```
+
+		Luego, puedes lanzar y manejar instancias de esta excepción en tu código.
+
+		```java
+
+		try {
+		    throw new MiExcepcion("Ocurrió un error personalizado");
+		} catch (MiExcepcion e) {
+		    System.out.println("Manejando MiExcepcion: " + e.getMessage());
+		}
+
+		```
+
+
+	El manejo de excepciones permiten escribir código que pueda anticipar y gestionar situaciones excepcionales, mejorando la robustez y la fiabilidad de tus programas. 
+
+	Es crucial para desarrollar software que pueda responder adecuadamente a condiciones imprevistas durante la ejecución.
+
 
 
 || Buenas prácticas para Objetos
+
+
+
 
 
 
