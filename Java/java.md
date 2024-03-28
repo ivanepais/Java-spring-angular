@@ -6969,6 +6969,873 @@
 
 || Buenas prácticas para Objetos
 
+	1. Sigue los Principios SOLID:
+
+    	S (Responsabilidad Única):
+
+    		Cada clase debería tener una única razón para cambiar.
+
+
+    	O (Abierto/Cerrado): 
+
+    		Las clases deben estar abiertas para la extensión pero cerradas para la modificación.
+
+
+    	L (Sustitución de Liskov):
+
+    		Los objetos de una superclase deberían ser reemplazables por objetos de sus subclases.
+
+
+    	I (Segregación de Interfaces): 
+
+    		No deberías ser obligado a depender de interfaces que no utilizas.
+
+
+    	D (Inversión de Dependencia):
+
+    		Deberías depender de abstracciones, no de implementaciones concretas.
+
+
+	2. Encapsulamiento:
+
+	    Oculta los detalles internos de una clase y expone solo lo que es necesario.
+
+	    Utiliza modificadores de acceso (public, private, protected) para controlar el acceso a los miembros de la clase.
+
+
+	3. Herencia y Composición:
+
+	    Prefiere la composición sobre la herencia cuando sea posible.
+
+	    Usa la herencia de manera cuidadosa, evitando jerarquías profundas y frágiles.
+
+
+	4. Polimorfismo:
+
+	    Aprovecha el polimorfismo para permitir que objetos de diferentes clases sean tratados de manera uniforme a través de interfaces comunes.
+
+
+	5. Interfaces:
+
+	    Define interfaces claras y cohesivas para abstraer comportamientos comunes.
+
+	    Las interfaces deben ser pequeñas y centradas en un propósito específico.
+
+
+	6. Evita el Acoplamiento Excesivo:
+
+	    Minimiza las dependencias entre clases para hacer el sistema más flexible y fácil de mantener.
+
+	    Utiliza patrones de diseño como Inyección de Dependencias para reducir el acoplamiento.
+
+
+	7. Evita Clases Demasiado Grandes:
+
+	    Divide clases grandes en clases más pequeñas y cohesivas que realicen tareas específicas.
+
+
+	8. Nombres Significativos:
+
+	    Elige nombres descriptivos y significativos para clases, métodos y variables.
+
+	    Sigue convenciones de nomenclatura Java (CamelCase para nombres de variables y métodos, PascalCase para nombres de clases).
+
+
+	9. Mantenlo Simple:
+
+	    Sigue el principio KISS (Keep It Simple, Stupid). 
+
+	    Evita complejidades innecesarias.
+
+
+	10. Pruebas Unitarias:
+
+	    Escribe pruebas unitarias para validar el comportamiento de tus clases y métodos.
+
+	    Utiliza frameworks de pruebas como JUnit.
+
+
+	11. Documentación Clara:
+
+	    Proporciona comentarios y documentación clara para explicar el propósito y uso de tus clases y métodos.
+
+
+	12. Versionamiento:
+
+	    Utiliza sistemas de control de versiones como Git para rastrear cambios en tu código.
+
+
+	13. Manejo de Excepciones:
+
+	    Maneja las excepciones de manera adecuada y evita el uso excesivo de bloques try-catch.
+
+
+	14. Diseño Defensivo:
+
+	    Valida las entradas y salidas para evitar errores y comportamientos inesperados.
+
+
+	15. Consistencia de Estilo:
+
+	    Mantén un estilo de codificación consistente en todo el proyecto. 
+
+	    Puedes seguir las convenciones de estilo Java (por ejemplo, Java Code Conventions).
+
+
+
+|| Convensión de nomenclatura
+
+	Son reglas que especifican cómo se deben nombrar los identificadores, como variables, métodos, clases, etc. 
+
+	Estas convenciones ayudan a que el código sea más legible y comprensible.	
+
+
+	1. Nombres de Clases:
+
+    	Utiliza PascalCase para nombres de clases.
+
+    	Ejemplo: MiClase, Empleado, ConexionBD
+
+
+	2. Nombres de Interfaces:
+
+	    Utiliza el mismo formato que para las clases (PascalCase).
+
+	    Ejemplo: MiInterfaz, Serializable, Comparable
+
+
+	3. Nombres de Métodos:
+
+	    Utiliza camelCase para nombres de métodos.
+
+	    Ejemplo: calcularTotal(), obtenerNombre(), conectarBD()
+
+
+	4. Nombres de Variables:
+
+	    Utiliza camelCase para nombres de variables.
+
+	    Ejemplo: numeroEstudiantes, precioProducto, nombreUsuario
+
+
+	5. Nombres de Constantes:
+
+	    Utiliza MAYÚSCULAS con guiones bajos para separar palabras en nombres de constantes.
+
+	    Ejemplo: MAXIMO_VALOR, CANTIDAD_MAXIMA, PI
+
+
+	6. Nombres de Paquetes:
+
+	    Utiliza letras minúsculas y evita el uso de mayúsculas.
+
+	    Ejemplo: com.miempresa.miproducto, org.ejemplo.paquete
+
+
+	7. Convenciones para Booleans:
+
+	    Utiliza prefijos como is, has, o can para nombres de variables booleanas.
+
+	    Ejemplo: esActivo, tienePermiso, puedeEditar
+
+
+	8. Convenciones para Acrónimos:
+
+	    Acrónimos de dos letras deben estar en mayúsculas. 
+
+	    Acrónimos más largos deben seguir las reglas de camelCase.
+
+	    Ejemplo: HTTPConnection, IOStream, XMLParser
+
+
+	9. Evitar Nombres de Una Letra:
+
+	    A menos que sea un índice de bucle (i, j, k) o un objeto de colección, evita nombres de una letra.
+
+	    Utiliza nombres descriptivos para mejorar la legibilidad.
+
+
+	10. Nombres Descriptivos:
+
+	    Elige nombres que sean descriptivos y que indiquen claramente el propósito del identificador.
+
+
+	11. Convenciones para Métodos Getters y Setters:
+
+	    Utiliza 'getNombreVariable()' y 'setNombreVariable()'' para métodos getters y setters.
+
+	    Ejemplo: getNombre(), setEdad(int edad).
+
+
+	12. Convenciones para Constructores:
+
+	    Utiliza nombres descriptivos y significativos para los constructores.
+
+	    Puedes usar camelCase o PascalCase según tu preferencia.
+
+
+
+|| KISS
+
+	Keep It Simple, Stupid es un principio de diseño y desarrollo de software que aboga por la simplicidad y la claridad en la creación de sistemas y programas.
+
+	Este principio se atribuye a Kelly Johnson, un ingeniero aeroespacial de la Lockheed Skunk Works, y ha sido adoptado en la programación y en diversos campos de diseño.
+
+
+	Principios:
+
+	1. Simplicidad:
+
+	    Aboga por soluciones sencillas en lugar de soluciones complejas.
+
+	    Prefiere la claridad y la comprensión directa del código.
+
+
+	2. Eliminar Complejidades Innecesarias:
+
+	    Evita agregar características, código o estructuras que no sean esenciales para el funcionamiento del sistema.
+
+	    Elimina código redundante y complicaciones no justificadas.
+
+
+	3. Facilita la Comprensión:
+
+	    Un código simple es más fácil de entender y mantener.
+
+	    Mejora la legibilidad y reduce la probabilidad de errores.
+
+
+	4. Menos Propenso a Errores:
+
+	    Menos código y menos complejidad reducen la posibilidad de introducir errores.
+
+	    Facilita la identificación y corrección de problemas.
+
+
+	5. Diseño Efectivo:
+
+	    Se centra en la efectividad y la funcionalidad esencial en lugar de en características avanzadas innecesarias.
+
+	    Simplifica el diseño para lograr el objetivo principal.	
+
+
+	KISS en programación: 
+
+	1. Diseño de Algoritmos:
+
+	    Prefiere algoritmos simples y eficientes sobre algoritmos complicados.
+
+	    Evita la sobreoptimización que puede aumentar la complejidad sin proporcionar beneficios significativos.
+
+
+	2. Estructuras de Datos:
+
+	    Utiliza estructuras de datos simples y apropiadas para el problema en cuestión.
+
+	    Evita estructuras demasiado complejas si no son necesarias.
+
+
+	3. Mantenimiento del Código:
+
+	    Escribe código que sea fácil de entender para otros desarrolladores y para ti mismo en el futuro.
+
+	    Documenta donde sea necesario, pero no exageres.
+
+
+	4. Interfaz de Usuario:
+
+	    Diseña interfaces de usuario simples y fáciles de usar.
+
+	    Evita la sobrecarga de características que pueden confundir a los usuarios.
+
+
+	5. Manejo de Errores:
+
+	    Diseña manejo de errores claro y directo.
+
+	    Evita construcciones complejas que dificulten la depuración.
+
+
+	6. Escalabilidad:
+
+	    Prefiere soluciones escalables y flexibles, pero no añadas complejidad innecesaria en previsión de posibles expansiones futuras que podrían no ser necesarias.
+
+
+
+|| Validación de entradas y salidas
+
+	Práctica de verificar y asegurar que los datos que ingresan o salen de una parte del programa cumplan con ciertos criterios o restricciones específicas. 
+
+	Esto se hace para prevenir errores, mejorar la robustez del software y garantizar que el programa funcione de manera predecible y segura.
+
+
+	1. Validación de Entradas:
+
+    Datos del Usuario:
+
+        Al recibir datos del usuario a través de la interfaz de usuario, como formularios, asegúrate de que los datos ingresados sean del tipo y formato correctos.
+
+        Verifica la longitud, el formato, y la validez semántica de los datos.
+
+
+    Parámetros de Funciones y Métodos:
+        
+        Antes de procesar los datos dentro de una función o método, valida que los parámetros cumplen con los requisitos esperados.
+
+        Verifica si los valores están dentro de rangos aceptables y si son del tipo correcto.
+
+
+    Datos Externos:
+
+        Al interactuar con fuentes externas, como archivos, bases de datos o servicios web, valida los datos antes de procesarlos.
+
+        Evita procesar datos corruptos o maliciosos que podrían comprometer la integridad del sistema.
+
+
+    Prevención de Inyección de Datos:
+        
+        Para evitar vulnerabilidades como la inyección de SQL, asegúrate de que los datos ingresados por el usuario no puedan ser interpretados como comandos o instrucciones maliciosas.
+
+
+	2. Validación de Salidas:
+
+	Datos Mostrados al Usuario:
+	
+		Antes de presentar datos al usuario, verifica que estén formateados correctamente y que no contengan información confidencial o incorrecta.
+	
+		Evita la presentación de datos que podrían ser confusos o malinterpretados.
+
+
+    Datos Enviados a Otros Sistemas:
+       
+        Cuando el programa envía datos a otros sistemas, como servicios web, asegúrate de que los datos cumplen con los requisitos de ese sistema.
+
+        Verifica la integridad y el formato de los datos antes de enviarlos.
+
+
+    Prevención de Errores de Codificación:
+
+        Asegúrate de que los datos generados por el programa, ya sea para su almacenamiento, presentación o envío, estén libres de errores de codificación que puedan causar malentendidos o problemas en otros sistemas.
+
+
+
+|| SOLID
+	
+	Son un conjunto de cinco principios de diseño de software que, cuando se aplican correctamente, ayudan a crear sistemas más comprensibles, flexibles y mantenibles. 
+
+	Fueron introducidos por Robert C. Martin, representan una guía para desarrolladores que buscan escribir código más eficiente y escalable.
+
+
+	1. Principio de Responsabilidad Única (SRP):
+
+		Definición:
+
+	    	Una clase debe tener una sola razón para cambiar, es decir, debe tener una única responsabilidad.
+
+		Implicaciones:
+
+	    	Cada clase debe tener un propósito específico y no debe asumir responsabilidades que no le correspondan.
+	    	
+	    	Facilita la comprensión, el mantenimiento y la evolución del código.
+
+
+	2. Principio de Abierto/Cerrado (OCP):
+
+		Definición:
+
+	    	Una clase debe estar abierta para la extensión pero cerrada para la modificación.
+
+		Implicaciones:
+
+	    	Deberías poder extender el comportamiento de una clase sin modificar su código fuente.
+
+	    	Se logra mediante el uso de interfaces, herencia y polimorfismo.
+
+
+	3. Principio de Sustitución de Liskov (LSP):
+
+		Definición:
+
+	    	Las subclases deben ser sustituibles por sus clases base sin afectar la funcionalidad del programa.
+
+		Implicaciones:
+
+	   		Las clases derivadas deben ser coherentes con las clases base en términos de comportamiento.
+
+	    	Garantiza que las subclases cumplan con el contrato establecido por las clases base.
+
+
+	4. Principio de Segregación de Interfaces (ISP):
+
+		Definición:
+
+	    	Un cliente no debe verse obligado a depender de interfaces que no utiliza.
+
+		Implicaciones:
+
+	    	Divide interfaces grandes en interfaces más pequeñas y específicas.
+
+	    	Evita que las clases implementen métodos que no necesitan.
+
+
+	5. Principio de Inversión de Dependencias (DIP):
+
+		Definición:
+
+	    	Las dependencias deben ser sobre abstracciones, no sobre implementaciones concretas.
+
+		Implicaciones:
+
+	    	Las clases de alto nivel no deben depender de clases de bajo nivel, sino de abstracciones.
+	    	
+	    	Promueve el uso de interfaces y abstracciones para reducir el acoplamiento.
+
+ 
+
+
+|| Abstracción sobre Implementación
+	
+	Este principio enfatiza la importancia de programar contra interfaces y abstracciones en lugar de depender directamente de implementaciones concretas. 
+
+	Al hacerlo, se logra un código más flexible, mantenible y resistente a cambios.
+	
+	Simplifica las pruebas unitarias, ya que puedes utilizar mocks o stubs para simular el comportamiento de las implementaciones concretas durante las pruebas.
+
+
+	Ejemplo 1: 
+
+	```java
+
+	// Dependiendo de la abstracción (Interfaz)
+	public interface Reproducible {
+	    void reproducir();
+	}
+
+	// Implementación concreta
+	public class Reproductor implements Reproducible {
+	    @Override
+	    public void reproducir() {
+	        // Lógica para reproducir
+	    }
+	}
+
+	// Cliente que depende de la abstracción (Interfaz)
+	public class ClienteReproductor {
+	    private Reproducible reproductor;
+
+	    public ClienteReproductor(Reproducible reproductor) {
+	        this.reproductor = reproductor;
+	    }
+
+	    public void iniciarReproduccion() {
+	        reproductor.reproducir();
+	    }
+	}
+
+	```
+
+	'ClienteReproductor' depende de la abstracción Reproducible en lugar de depender directamente de la implementación concreta 'Reproductor'. 
+
+	Esto permite cambiar fácilmente la implementación concreta sin modificar el código del cliente.
+
+
+
+	Ejemplo 2: 
+
+
+	Ejemplo 3: 
+
+
+
+	Este principio está estrechamente relacionado con otros principios de diseño, como la inversión de dependencias (Dependency Inversion Principle, DIP) y la inversión de control (Inversion of Control, IoC). 
+
+	La inversión de dependencias sugiere que las clases de alto nivel no deberían depender de clases de bajo nivel, sino de abstracciones. 
+
+	La inversión de control se refiere a la inversión del flujo de control desde el código cliente a un contenedor o marco de trabajo que maneja la creación y gestión de objetos.
+
+
+
+|| Inyección de Dependencias
+	
+	Es un patrón de diseño en el que las dependencias de un objeto son proporcionadas externamente en lugar de ser creadas internamente. 
+
+	Este patrón tiene como objetivo reducir el acoplamiento entre componentes, mejorar la modularidad y facilitar la prueba unitaria al hacer que las dependencias sean más flexibles y fáciles de cambiar.
+
+
+	Componentes: 
+
+	1. Cliente:
+
+    	El cliente es el componente que necesita ciertas funcionalidades o servicios para cumplir su propósito.
+
+
+	2. Servicio (o Dependencia):
+
+	    El servicio es la dependencia requerida por el cliente. Puede ser cualquier objeto, clase o componente que el cliente necesite para realizar su tarea.
+
+
+	3. Inyector (o Contenedor de Inversión de Control, IoC):
+
+	    El inyector es responsable de proporcionar las dependencias al cliente. 
+
+	    Puede ser un contenedor de IoC que gestiona y suministra las dependencias.	
+
+
+	Dos formas de Implementación: 
+
+	1. Constructor:
+
+    	La inyección de dependencias se realiza a menudo a través de un constructor. 
+
+    	El cliente declara las dependencias como parámetros en su constructor.
+
+    	```java
+
+		public class Cliente {
+		    private Servicio servicio;
+
+		    // Inyección de dependencias a través del constructor
+		    public Cliente(Servicio servicio) {
+		        this.servicio = servicio;
+		    }
+
+		    public void realizarTarea() {
+		        // Utilizar el servicio
+		        servicio.realizarAccion();
+		    }
+		}
+
+    	```
+
+
+	2. Setter (Método de Configuración):
+
+    	En lugar de inyectar dependencias a través del constructor, se pueden proporcionar mediante métodos setter.
+
+    	```java
+
+    	public class Cliente {
+		    private Servicio servicio;
+
+		    // Setter para la inyección de dependencias
+		    public void setServicio(Servicio servicio) {
+		        this.servicio = servicio;
+		    }
+
+		    public void realizarTarea() {
+		        // Utilizar el servicio
+		        servicio.realizarAccion();
+		    }
+		}
+
+    	```
+
+
+	Ventajas de la Inyección de Dependencias:
+
+	    Desacoplamiento:
+	        
+	        Reduce el acoplamiento entre componentes al no requerir que el cliente conozca cómo crear sus dependencias.
+
+
+	    Flexibilidad:
+
+	        Facilita el cambio de implementaciones de dependencias sin modificar el código del cliente.
+
+
+	    Pruebas Unitarias:
+
+	        Facilita las pruebas unitarias al permitir la sustitución de implementaciones reales por implementaciones de prueba.
+
+
+	    Modularidad:
+
+	        Mejora la modularidad del código al dividir la creación de objetos y la lógica de negocio.
+
+
+	Implementación con Contenedor de IoC:
+
+		En muchos casos, la inyección de dependencias se implementa mediante un contenedor de IoC, como Spring en Java.
+
+		Este tipo de contenedores gestionan la creación y administración de objetos, así como la inyección de dependencias automáticamente
+
+		```java
+
+		public class Cliente {
+		    private Servicio servicio;
+
+		    // Inyección de dependencias a través de Spring
+		    public Cliente(Servicio servicio) {
+		        this.servicio = servicio;
+		    }
+
+		    public void realizarTarea() {
+		        // Utilizar el servicio
+		        servicio.realizarAccion();
+		    }
+		}
+
+		```
+
+		Spring se encargaría de crear la instancia de Cliente y proporcionar la implementación de Servicio al momento de la creación.
+
+
+	La Inyección de Dependencias es una técnica poderosa que promueve la construcción de sistemas más flexibles y mantenibles al reducir las dependencias directas entre los componentes.
+
+
+
+
+|| Interfaces Comunes
+	
+	Se refiere al uso de interfaces para establecer contratos comunes que varias clases pueden implementar. 
+
+	Una interfaz define un conjunto de métodos que las clases deben implementar, pero no proporciona la implementación real de esos métodos. 
+
+	Esto permite que múltiples clases compartan un comportamiento común a través de la implementación de la misma interfaz.
+	
+
+	Ejemplo: 
+
+		Interfaz llamada 'Reproducible' que define un método abstracto (sin implementación) reproducir para objetos que pueden reproducirse:
+
+	```java
+
+	public interface Reproducible {
+	    void reproducir();
+	}
+
+	```
+
+	Varias clases pueden implementar esta interfaz para indicar que son capaces de reproducirse:
+
+	```java
+
+	public class Mamifero implements Reproducible {
+	    @Override
+	    public void reproducir() {
+	        // Lógica de reproducción para mamíferos
+	    }
+	}
+
+	public class Pajaro implements Reproducible {
+	    @Override
+	    public void reproducir() {
+	        // Lógica de reproducción para aves
+	    }
+	}
+
+	public class Pez implements Reproducible {
+	    @Override
+	    public void reproducir() {
+	        // Lógica de reproducción para peces
+	    }
+	}
+
+	```
+
+
+
+
+|| Composición sobre Herencia
+	
+	La composición es un principio de diseño en programación orientada a objetos (POO) que sugiere que, en lugar de extender una clase a través de la herencia, es preferible componerla utilizando otras clases como componentes.
+
+	Este principio resalta los beneficios de construir sistemas flexibles y mantenibles mediante la composición de objetos en lugar de depender en gran medida de la jerarquía de herencia.	
+
+
+	Ejemplo:
+
+		En lugar de extender una clase 'Vehiculo' a través de la herencia, podríamos componerla utilizando diferentes clases para representar partes específicas de un vehículo, como Motor, Ruedas, etc.
+
+
+	```java
+
+	public class Vehiculo {
+	    private Motor motor;
+	    private Ruedas ruedas;
+
+	    public Vehiculo(Motor motor, Ruedas ruedas) {
+	        this.motor = motor;
+	        this.ruedas = ruedas;
+	    }
+
+	    public void iniciar() {
+	        motor.arrancar();
+	        // Lógica para iniciar el vehículo
+	    }
+
+	    public void conducir() {
+	        ruedas.girar();
+	        // Lógica para conducir el vehículo
+	    }
+	}
+
+	```
+
+	'Vehiculo' está compuesto por un Motor y unas Ruedas. 
+
+	Esto proporciona mayor flexibilidad para crear diferentes tipos de vehículos al combinar diferentes componentes.
+
+
+	Uso de Herencia: 
+
+		Hay situaciones en las que la herencia tiene sentido y es apropiada. 
+
+		Por ejemplo, cuando se quiere establecer una relación de "es un" clara y directa entre dos clases, la herencia puede ser la elección adecuada.
+
+		La clave es no depender exclusivamente de la herencia como el único mecanismo para la creación de jerarquías de clases, sino considerar la composición como una herramienta poderosa y versátil para construir sistemas orientados a objetos
+
+	
+
+|| Clases de Alto Nivel vs Bajo Nivel
+
+	Ejemplo 1: 
+
+
+
+	Ejemplo 2: 
+
+	
+
+
+|| Abstracción
+	
+	Ejemplo 1: 
+
+	Ejemplo 2: 
+
+	Ejemplo 3: 
+
+
+
+|| Interfaz 
+
+	Ejemplo 1: 
+
+
+	Ejemplo 2: 
+
+
+	Ejemplo 3: 
+
+
+
+
+
+
+|| Encapsulación 
+
+
+
+
+
+|| Anotaciones
+
+	Son una forma de proporcionar metadatos sobre clases, métodos, variables y otros elementos del código fuente. 
+
+	Estos metadatos pueden ser utilizados por el compilador, herramientas de desarrollo, o en tiempo de ejecución para realizar acciones específicas. 
+
+	Las anotaciones están precedidas por el símbolo '@' y se colocan justo antes del elemento que están anotando.
+
+	```java
+
+	@MiAnotacion
+	public class MiClase {
+	    @OtraAnotacion
+	    private int miVariable;
+
+	    @Override
+	    @OtraAnotacion
+	    public void miMetodo() {
+	        // Código del método
+	    }
+	}
+
+	```
+
+	'@MiAnotacion' y '@OtraAnotacion' son anotaciones que se aplican a la clase MiClase y a la variable y método dentro de esa clase, respectivamente.
+
+
+	Predefinidas: 
+
+		@Override: 
+
+			Indica que el método anotado debe sobrescribir un método en la superclase.	
+		
+
+		@Deprecated: 
+
+			Marca el elemento anotado como obsoleto, lo que indica que su uso no se recomienda.
+		
+
+		@SuppressWarnings: 
+
+			Informa al compilador para suprimir advertencias específicas.
+	
+
+		@FunctionalInterface: 
+
+			Indica que la interfaz anotada es una interfaz funcional
+
+
+	Personalizadas:
+
+		Se hace mediante la definición de una interfaz precedida por el símbolo '@'. Estas interfaces suelen tener elementos que pueden tener valores predeterminados y restricciones.
+
+
+	```java
+
+	import java.lang.annotation.*;
+
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.METHOD)
+	public @interface MiAnotacion {
+	    String valor() default "MiValorPredeterminado";
+	    int numero() default 42;
+	}
+
+	```
+
+	'@MiAnotacion' es una anotación personalizada con dos elementos (valor y numero). 
+
+	Puedes aplicar esta anotación a elementos específicos en tu código.
+
+
+	Elementos comunes: 
+
+		@Retention: 
+
+			Especifica hasta qué punto la anotación se conserva. 
+
+			RetentionPolicy.RUNTIME significa que estará disponible en tiempo de ejecución.
+
+
+    	@Target: 
+
+    		Especifica dónde puedes aplicar la anotación (clases, métodos, campos, etc.).
+
+
+    	@Documented: 
+
+    		Indica que la anotación debe incluirse en la documentación generada.
+
+
+    	@Inherited: 
+
+    		Indica que la anotación se hereda por las subclases.
+
+
+   	Acceder a anotaciones en tiempo de ejecución: 
+
+   		Permite obtener los valores de los elementos de la anotación y tomar decisiones en tiempo de ejecución basándote en esos valores.
+
+   		```java
+
+   		MiAnotacion anotacion = miMetodo.getClass().getMethod("miMetodo").getAnnotation(MiAnotacion.class);
+		String valor = anotacion.valor();
+		int numero = anotacion.numero();
+
+   		```
 
 
 
